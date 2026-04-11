@@ -718,10 +718,23 @@
 
           <!-- ── Location ── -->
           <div>
-            <p class="form-section-title">Delivery Location</p>
+            <p class="form-section-title">Delivery / Pickup</p>
             <div class="form-group">
+              <label>Fulfilment Method</label>
+              <div style="display:flex;gap:24px;margin-bottom:16px;">
+                <label style="display:flex;align-items:center;gap:8px;font-weight:500;cursor:pointer;">
+                  <input type="radio" name="fulfilment" value="Delivery" checked onchange="document.getElementById('city-group').style.display='block'" />
+                  Delivery (GTA)
+                </label>
+                <label style="display:flex;align-items:center;gap:8px;font-weight:500;cursor:pointer;">
+                  <input type="radio" name="fulfilment" value="Pick-up" onchange="document.getElementById('city-group').style.display='none'" />
+                  Pick-up
+                </label>
+              </div>
+            </div>
+            <div class="form-group" id="city-group">
               <label for="city">City / Area (GTA)</label>
-              <select id="city" name="city" required>
+              <select id="city" name="city">
                 <option value="" disabled selected>Select your city</option>
                 <option>Toronto</option>
                 <option>Mississauga</option>
