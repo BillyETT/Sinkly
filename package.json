@@ -1,0 +1,8 @@
+{
+  "name": "sinkly",
+  "version": "1.0.0",
+  "description": "Sinkly — Premium Sinks & Faucets",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

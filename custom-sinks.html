@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Integrated Stone Sinks GTA — Sinkly</title>
+  <meta name="description" content="Fully custom integrated sinks built from marble, quartz, granite, and porcelain. Sinkly designs, fabricates, and installs custom stone sinks across the Greater Toronto Area. Request a free quote today." />
+  <meta name="keywords" content="custom sink GTA, custom integrated sink Toronto, marble sink Toronto, quartz sink GTA, granite sink Toronto, custom stone sink, vanity sink custom, kitchen sink custom Canada" />
+  <meta property="og:title" content="Custom Integrated Stone Sinks — Sinkly" />
+  <meta property="og:description" content="Your countertop, your sink, one seamless piece. Custom stone sinks fabricated and installed across the GTA." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Custom Sinks Page ── */
+    .custom-hero {
+      position: relative;
+      height: 540px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .custom-hero__bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2a27 100%);
+    }
+    .custom-hero__img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+    .custom-hero__content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding: 0 24px;
+    }
+    .custom-hero__eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 16px;
+    }
+    .custom-hero__heading {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+    .custom-hero__sub {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 540px;
+      margin: 0 auto 30px;
+      line-height: 1.65;
+    }
+
+    /* ── Feature Strip ── */
+    .custom-features {
+      background: var(--navy);
+      color: #fff;
+      padding: 32px 0;
+    }
+    .custom-features__inner {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+    .custom-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.04em;
+    }
+    .custom-feature svg { color: #c9a84c; flex-shrink: 0; }
+
+    /* ── Gallery Section ── */
+    .custom-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      height: 440px;
+    }
+    .custom-gallery__item {
+      overflow: hidden;
+      position: relative;
+    }
+    .custom-gallery__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .custom-gallery__item:hover img { transform: scale(1.04); }
+    .custom-gallery__item:first-child { border-radius: 0; }
+    .custom-gallery__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%);
+    }
+    .custom-gallery__label {
+      position: absolute;
+      bottom: 20px; left: 24px;
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── Intro Section ── */
+    .custom-intro {
+      background: var(--bg);
+      padding: 80px 0;
+    }
+    .custom-intro__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .custom-intro__text .section-label { margin-bottom: 12px; }
+    .custom-intro__text h2 {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .custom-intro__text p {
+      color: var(--taupe-dk);
+      line-height: 1.75;
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+    }
+    .custom-process {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .custom-process__step {
+      background: #fff;
+      border: 1px solid var(--taupe);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .custom-process__num {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #c9a84c;
+      margin-bottom: 8px;
+    }
+    .custom-process__step h5 {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .custom-process__step p {
+      font-size: 0.8rem;
+      color: var(--taupe-dk);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ── Quote Form ── */
+    .custom-form-section {
+      background: #fff;
+      padding: 80px 0;
+    }
+    .custom-form-section .section-header { margin-bottom: 48px; }
+    .custom-form {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      gap: 32px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1px solid var(--taupe);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      color: var(--navy);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* Radio & Checkbox Groups */
+    .form-radio-group,
+    .form-check-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .radio-option,
+    .check-option {
+      position: relative;
+    }
+    .radio-option input,
+    .check-option input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .radio-option label,
+    .check-option label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border: 1.5px solid var(--taupe);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--navy);
+      transition: all 0.18s;
+      background: var(--bg);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .radio-option input:checked + label,
+    .check-option input:checked + label {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: #fff;
+    }
+    .radio-option label:hover,
+    .check-option label:hover {
+      border-color: var(--navy);
+    }
+
+    /* Material swatches */
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .material-card input {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .material-card { position: relative; }
+    .material-card label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 12px 12px;
+      border: 1.5px solid var(--taupe);
+      border-radius: 10px;
+      cursor: pointer;
+      background: var(--bg);
+      transition: all 0.18s;
+      text-align: center;
+    }
+    .material-card input:checked + label {
+      border-color: var(--navy);
+      background: #f4f1ee;
+    }
+    .material-card label:hover { border-color: var(--navy); }
+    .material-swatch {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .material-card .mat-name {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .material-card .mat-desc {
+      font-size: 0.72rem;
+      color: var(--taupe-dk);
+      line-height: 1.3;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* File upload */
+    .file-upload-area {
+      border: 2px dashed var(--taupe);
+      border-radius: 10px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      background: var(--bg);
+    }
+    .file-upload-area:hover { border-color: var(--navy); }
+    .file-upload-area input[type="file"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .file-upload-area svg { color: var(--taupe-dk); margin-bottom: 10px; }
+    .file-upload-area p {
+      font-size: 0.85rem;
+      color: var(--taupe-dk);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .file-upload-area strong { color: var(--navy); }
+    .file-upload-area .file-name {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #c9a84c;
+      font-style: italic;
+    }
+    .upload-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Measurements */
+    .measurement-note {
+      font-size: 0.8rem;
+      color: var(--taupe-dk);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .unit-input {
+      position: relative;
+    }
+    .unit-input input { padding-right: 48px; }
+    .unit-label {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+      color: var(--taupe-dk);
+      font-family: 'Jost', sans-serif;
+      pointer-events: none;
+    }
+
+    /* Divider */
+    .form-divider {
+      border: none;
+      border-top: 1px solid var(--taupe);
+      margin: 0;
+    }
+    .form-section-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 20px;
+    }
+
+    /* Submit */
+    .form-submit-wrap { text-align: center; }
+    .form-submit-wrap .btn {
+      padding: 16px 48px;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+    }
+    .form-disclaimer {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: var(--taupe-dk);
+      line-height: 1.6;
+    }
+
+    /* Success Banner */
+    .form-success {
+      display: none;
+      background: #f0f7f0;
+      border: 1px solid #b2d8b2;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .form-success svg { color: #4a9c4a; margin-bottom: 12px; }
+    .form-success h4 {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .form-success p { font-size: 0.9rem; color: var(--taupe-dk); margin: 0; }
+
+    @media (max-width: 768px) {
+      .custom-gallery { grid-template-columns: 1fr; height: auto; }
+      .custom-gallery__item { height: 260px; }
+      .custom-intro__inner { grid-template-columns: 1fr; gap: 32px; }
+      .custom-process { grid-template-columns: 1fr; }
+      .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+      .material-grid { grid-template-columns: 1fr 1fr; }
+      .upload-grid { grid-template-columns: 1fr; }
+      .custom-features__inner { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <p>Free shipping on orders over $300 · Canada-wide delivery</p>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo"><img src="logo.png" alt="Sinkly" /></a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link nav__link--active">Sinks <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-sinks.html">Kitchen Sinks</a>
+              <a href="bathroom-sinks.html">Bathroom Sinks</a>
+              <a href="custom-sinks.html">Custom Sinks</a>
+            </div></div>
+          </li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Faucets <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-faucets.html">Kitchen Faucets</a>
+              <a href="bathroom-faucets.html">Bathroom Faucets</a>
+            </div></div>
+          </li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About Us</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="region-btn">Canada | CAD $ <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="header__divider"></div>
+        <button class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <button class="icon-btn" aria-label="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="icon-btn cart-btn" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count">0</span></button>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav__inner"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="mobile-nav__group"><span class="mobile-nav__label">Sinks</span><a href="kitchen-sinks.html" class="mobile-nav__sub">Kitchen Sinks</a><a href="bathroom-sinks.html" class="mobile-nav__sub">Bathroom Sinks</a><a href="custom-sinks.html" class="mobile-nav__sub">Custom Sinks</a></li>
+        <li class="mobile-nav__group"><span class="mobile-nav__label">Faucets</span><a href="kitchen-faucets.html" class="mobile-nav__sub">Kitchen Faucets</a><a href="bathroom-faucets.html" class="mobile-nav__sub">Bathroom Faucets</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="custom-hero">
+      <div class="custom-hero__bg"></div>
+      <img class="custom-hero__img" src="custom sinks/custom-1.png" alt="Custom Stone Sink" />
+      <div class="custom-hero__content">
+        <p class="custom-hero__eyebrow">Sinkly Custom</p>
+        <h1 class="custom-hero__heading">Custom Integrated Sinks<br>Built Around Your Space.</h1>
+        <p class="custom-hero__sub">Marble, quartz, granite, porcelain — we fabricate integrated sinks cut to your exact countertop and deliver throughout the Greater Toronto Area.</p>
+        <a href="#quote-form" class="btn btn--primary">Request a Quote</a>
+      </div>
+    </section>
+
+    <!-- Feature Strip -->
+    <section class="custom-features">
+      <div class="container">
+        <div class="custom-features__inner">
+          <div class="custom-feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Premium Stone Materials
+          </div>
+          <div class="custom-feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Built to Your Measurements
+          </div>
+          <div class="custom-feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            GTA Delivery &amp; Installation
+          </div>
+          <div class="custom-feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Dedicated Representative
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="custom-gallery">
+      <div class="custom-gallery__item">
+        <img src="custom sinks/custom-1.png" alt="Custom Kitchen Stone Sink" />
+        <div class="custom-gallery__overlay"></div>
+        <span class="custom-gallery__label">Kitchen Integration</span>
+      </div>
+      <div class="custom-gallery__item">
+        <img src="custom sinks/custom-2.png" alt="Custom Vanity Stone Sink" />
+        <div class="custom-gallery__overlay"></div>
+        <span class="custom-gallery__label">Vanity Integrated</span>
+      </div>
+      <div class="custom-gallery__item">
+        <img src="custom sinks/custom-3.png" alt="Custom Stone Sink" />
+        <div class="custom-gallery__overlay"></div>
+        <span class="custom-gallery__label">Stone Seamless</span>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="custom-intro section">
+      <div class="container">
+        <div class="custom-intro__inner">
+          <div class="custom-intro__text">
+            <p class="section-label">What We Offer</p>
+            <h2>One continuous surface. No seams, no shortcuts.</h2>
+            <p>Every custom sink starts with a real conversation. We work from your measurements and material of choice — marble, quartz, granite, or porcelain — to fabricate a sink that flows seamlessly into your countertop. No caulk lines, no drop-ins, just a clean, continuous surface that looks like it was always meant to be there.</p>
+            <p>Whether it's a floating vanity or a kitchen island, our team handles the full process: design review, cutting, finishing, delivery, and installation anywhere in the GTA.</p>
+          </div>
+          <div class="custom-process">
+            <div class="custom-process__step">
+              <p class="custom-process__num">STEP 01</p>
+              <h5>Submit Your Request</h5>
+              <p>Fill out our quote form with your sink type, material, and measurements.</p>
+            </div>
+            <div class="custom-process__step">
+              <p class="custom-process__num">STEP 02</p>
+              <h5>Consultation Call</h5>
+              <p>A Sinkly representative contacts you within 48 hours to go over details.</p>
+            </div>
+            <div class="custom-process__step">
+              <p class="custom-process__num">STEP 03</p>
+              <h5>Fabrication</h5>
+              <p>We source the slab and hand-fabricate your integrated sink to your exact specs.</p>
+            </div>
+            <div class="custom-process__step">
+              <p class="custom-process__num">STEP 04</p>
+              <h5>Delivery &amp; Install</h5>
+              <p>We deliver and install your custom piece anywhere in the Greater Toronto Area.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Form -->
+    <section class="custom-form-section" id="quote-form">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Custom Quote</p>
+          <h2>Tell Us About Your Project</h2>
+          <p style="color:var(--taupe-dk);max-width:520px;margin:0 auto;font-size:0.95rem;line-height:1.7;">Share the details of your project and we'll get back to you within 24–48 hours with pricing and next steps.</p>
+        </div>
+
+        <!-- NOTE: Replace YOUR_EMAIL@example.com with your actual email address -->
+        <form class="custom-form" id="customQuoteForm"
+              action="https://formsubmit.co/YOUR_EMAIL@example.com"
+              method="POST"
+              enctype="multipart/form-data">
+
+          <!-- Hidden FormSubmit config -->
+          <input type="hidden" name="_subject" value="New Custom Sink Quote — Sinkly" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+
+          <!-- ── Sink Type ── -->
+          <div>
+            <p class="form-section-title">Sink Type</p>
+            <div class="form-group">
+              <label>What type of sink are you looking for?</label>
+              <div class="form-radio-group">
+                <div class="radio-option">
+                  <input type="radio" name="sink_type" id="type-kitchen" value="Kitchen Sink" required />
+                  <label for="type-kitchen">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                    Kitchen Sink
+                  </label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="sink_type" id="type-vanity" value="Vanity Sink" />
+                  <label for="type-vanity">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    Vanity Sink
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="form-divider" />
+
+          <!-- ── Material ── -->
+          <div>
+            <p class="form-section-title">Material</p>
+            <div class="form-group">
+              <label>Select your preferred stone material</label>
+              <div class="material-grid">
+                <div class="material-card">
+                  <input type="radio" name="material" id="mat-marble" value="Marble" required />
+                  <label for="mat-marble">
+                    <div class="material-swatch" style="background: linear-gradient(135deg, #f5f0eb 0%, #e8e0d5 40%, #d4c9bc 100%);"></div>
+                    <span class="mat-name">Marble</span>
+                    <span class="mat-desc">Classic veining, timeless elegance</span>
+                  </label>
+                </div>
+                <div class="material-card">
+                  <input type="radio" name="material" id="mat-quartz" value="Quartz" />
+                  <label for="mat-quartz">
+                    <div class="material-swatch" style="background: linear-gradient(135deg, #f0ede9 0%, #e5e0da 50%, #ccc7c0 100%);"></div>
+                    <span class="mat-name">Quartz</span>
+                    <span class="mat-desc">Durable, low-maintenance, consistent</span>
+                  </label>
+                </div>
+                <div class="material-card">
+                  <input type="radio" name="material" id="mat-granite" value="Granite" />
+                  <label for="mat-granite">
+                    <div class="material-swatch" style="background: linear-gradient(135deg, #8c8078 0%, #6e6358 50%, #504940 100%);"></div>
+                    <span class="mat-name">Granite</span>
+                    <span class="mat-desc">Bold texture, heat resistant</span>
+                  </label>
+                </div>
+                <div class="material-card">
+                  <input type="radio" name="material" id="mat-porcelain" value="Porcelain" />
+                  <label for="mat-porcelain">
+                    <div class="material-swatch" style="background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #e8e8e8 100%); border: 1px solid #e0e0e0;"></div>
+                    <span class="mat-name">Porcelain</span>
+                    <span class="mat-desc">Crisp white, ultra-smooth finish</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="form-divider" />
+
+          <!-- ── Measurements ── -->
+          <div>
+            <p class="form-section-title">Measurements</p>
+            <div class="form-group">
+              <label>Countertop / Sink Dimensions</label>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="meas-width">Width</label>
+                  <div class="unit-input">
+                    <input type="number" id="meas-width" name="width_inches" placeholder="e.g. 36" min="1" />
+                    <span class="unit-label">in</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="meas-depth">Depth</label>
+                  <div class="unit-input">
+                    <input type="number" id="meas-depth" name="depth_inches" placeholder="e.g. 22" min="1" />
+                    <span class="unit-label">in</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="meas-height">Sink Height</label>
+                  <div class="unit-input">
+                    <input type="number" id="meas-height" name="height_inches" placeholder="e.g. 8" min="1" />
+                    <span class="unit-label">in</span>
+                  </div>
+                </div>
+              </div>
+              <p class="measurement-note">Approximate measurements are fine — your representative will confirm exact specs during the consultation.</p>
+            </div>
+          </div>
+
+          <hr class="form-divider" />
+
+          <!-- ── Location ── -->
+          <div>
+            <p class="form-section-title">Delivery Location</p>
+            <div class="form-group">
+              <label for="city">City / Area (GTA)</label>
+              <select id="city" name="city" required>
+                <option value="" disabled selected>Select your city</option>
+                <option>Toronto</option>
+                <option>Mississauga</option>
+                <option>Brampton</option>
+                <option>Vaughan</option>
+                <option>Richmond Hill</option>
+                <option>Markham</option>
+                <option>Scarborough</option>
+                <option>Etobicoke</option>
+                <option>North York</option>
+                <option>Pickering</option>
+                <option>Ajax</option>
+                <option>Whitby</option>
+                <option>Oshawa</option>
+                <option>Oakville</option>
+                <option>Burlington</option>
+                <option>Milton</option>
+                <option>Hamilton</option>
+                <option>Other (GTA)</option>
+              </select>
+            </div>
+          </div>
+
+          <hr class="form-divider" />
+
+          <!-- ── Inspiration Photos ── -->
+          <div>
+            <p class="form-section-title">Inspiration Photos (Optional)</p>
+            <div class="form-group">
+              <label>Upload up to 2 photos of your inspiration or existing space</label>
+              <div class="upload-grid">
+                <div>
+                  <label for="photo1" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:0.82rem;color:var(--taupe-dk);margin-bottom:6px;display:block;">Photo 1</label>
+                  <div class="file-upload-area" onclick="document.getElementById('photo1').click()">
+                    <input type="file" id="photo1" name="inspiration_photo_1" accept="image/*" onchange="showFileName(this,'file1name')" />
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <p><strong>Click to upload</strong><br>JPG, PNG, HEIC — max 10MB</p>
+                    <p class="file-name" id="file1name"></p>
+                  </div>
+                </div>
+                <div>
+                  <label for="photo2" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:0.82rem;color:var(--taupe-dk);margin-bottom:6px;display:block;">Photo 2</label>
+                  <div class="file-upload-area" onclick="document.getElementById('photo2').click()">
+                    <input type="file" id="photo2" name="inspiration_photo_2" accept="image/*" onchange="showFileName(this,'file2name')" />
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <p><strong>Click to upload</strong><br>JPG, PNG, HEIC — max 10MB</p>
+                    <p class="file-name" id="file2name"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="form-divider" />
+
+          <!-- ── Additional Notes ── -->
+          <div class="form-group">
+            <p class="form-section-title" style="margin-bottom:12px;">Additional Notes</p>
+            <label for="notes">Anything else we should know about your project?</label>
+            <textarea id="notes" name="notes" placeholder="E.g. double sink, specific edge profile, backsplash integration, timeline, etc."></textarea>
+          </div>
+
+          <hr class="form-divider" />
+
+          <!-- ── Contact Info ── -->
+          <div>
+            <p class="form-section-title">Your Contact Information</p>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-grid-2" style="margin-top:16px;">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(416) 555-0100" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Submit ── -->
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn--primary">Submit Custom Quote Request</button>
+            <p class="form-disclaimer">By submitting this form, you agree to be contacted by a Sinkly representative regarding your custom sink project. We typically respond within 24–48 hours.</p>
+          </div>
+
+        </form>
+
+        <!-- Success Message (shown after JS submit) -->
+        <div class="form-success" id="formSuccess">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 12px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h4>Request Received!</h4>
+          <p>Thank you — one of our representatives will be in touch within 24–48 hours to discuss your custom sink project.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="logo.png" alt="Sinkly" class="footer__logo" />
+          <p>Premium sinks and faucets for the modern Canadian home.</p>
+          <div class="footer__socials"><a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col"><h5>Shop</h5><ul>
+            <li class="footer__group-label">Sinks</li>
+            <li><a href="kitchen-sinks.html" class="footer__sub">Kitchen</a></li>
+            <li><a href="bathroom-sinks.html" class="footer__sub">Bathroom</a></li>
+            <li><a href="custom-sinks.html" class="footer__sub">Custom</a></li>
+            <li class="footer__group-label">Faucets</li>
+            <li><a href="kitchen-faucets.html" class="footer__sub">Kitchen</a></li>
+            <li><a href="bathroom-faucets.html" class="footer__sub">Bathroom</a></li>
+          </ul></div>
+          <div class="footer__col"><h5>Help</h5><ul><li><a href="about.html">Contact Us</a></li></ul></div>
+          <div class="footer__col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li></ul></div>
+        </div>
+      </div>
+      <div class="footer__bottom"><p>© 2026 Sinkly. All rights reserved.</p><p>Based in Canada 🇨🇦</p></div>
+    </div>
+  </footer>
+
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-overlay__close" id="searchClose" aria-label="Close search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="search-overlay__inner">
+      <input type="text" class="search-overlay__input" id="searchInput" placeholder="Search products…" autocomplete="off" />
+      <div class="search-overlay__results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer__header"><h3>Your Cart</h3><button class="cart-drawer__close" id="cartClose" aria-label="Close cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="cart-drawer__items" id="cartItems"></div>
+    <div class="cart-drawer__footer"><div class="cart-drawer__total"><span>Total</span><span id="cartTotal">$0.00</span></div><button class="btn btn--primary" style="width:100%;">Checkout</button></div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Show file name when selected
+    function showFileName(input, targetId) {
+      const el = document.getElementById(targetId);
+      el.textContent = input.files[0] ? input.files[0].name : '';
+    }
+
+    // Smooth scroll to form
+    document.querySelectorAll('a[href="#quote-form"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('quote-form').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

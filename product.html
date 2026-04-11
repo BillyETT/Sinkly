@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Sinkly</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <p>Free shipping on orders over $300 · Canada-wide delivery</p>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo"><img src="logo.png" alt="Sinkly" /></a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Sinks <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-sinks.html">Kitchen Sinks</a>
+              <a href="bathroom-sinks.html">Bathroom Sinks</a>
+              <a href="custom-sinks.html">Custom Sinks</a>
+            </div></div>
+          </li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Faucets <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-faucets.html">Kitchen Faucets</a>
+              <a href="bathroom-faucets.html">Bathroom Faucets</a>
+            </div></div>
+          </li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About Us</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="region-btn">Canada | CAD $ <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="header__divider"></div>
+        <button class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <button class="icon-btn" aria-label="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="icon-btn cart-btn" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count">0</span></button>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav__inner"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="mobile-nav__group"><span class="mobile-nav__label">Sinks</span><a href="kitchen-sinks.html" class="mobile-nav__sub">Kitchen Sinks</a><a href="bathroom-sinks.html" class="mobile-nav__sub">Bathroom Sinks</a><a href="custom-sinks.html" class="mobile-nav__sub">Custom Sinks</a></li>
+        <li class="mobile-nav__group"><span class="mobile-nav__label">Faucets</span><a href="kitchen-faucets.html" class="mobile-nav__sub">Kitchen Faucets</a><a href="bathroom-faucets.html" class="mobile-nav__sub">Bathroom Faucets</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul></div>
+    </div>
+  </header>
+
+  <main>
+    <div id="product-page-content"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="logo.png" alt="Sinkly" class="footer__logo" />
+          <p>Premium sinks and faucets for the modern Canadian home.</p>
+          <div class="footer__socials"><a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col"><h5>Shop</h5><ul><li class="footer__group-label">Sinks</li><li><a href="kitchen-sinks.html" class="footer__sub">Kitchen</a></li><li><a href="bathroom-sinks.html" class="footer__sub">Bathroom</a></li><li class="footer__group-label">Faucets</li><li><a href="kitchen-faucets.html" class="footer__sub">Kitchen</a></li><li><a href="bathroom-faucets.html" class="footer__sub">Bathroom</a></li></ul></div>
+          <div class="footer__col"><h5>Help</h5><ul><li><a href="about.html">Contact Us</a></li></ul></div>
+          <div class="footer__col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li></ul></div>
+        </div>
+      </div>
+      <div class="footer__bottom"><p>© 2026 Sinkly. All rights reserved.</p><p>Based in Canada 🇨🇦</p></div>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script>
+  (function () {
+    const params  = new URLSearchParams(window.location.search);
+    const id      = params.get('id');
+    const container = document.getElementById('product-page-content');
+
+    function notFound() {
+      container.innerHTML = `
+        <div style="padding:80px 40px;text-align:center;">
+          <h2 style="color:var(--navy);">Product not found</h2>
+          <a href="shop.html" class="btn btn--primary" style="margin-top:24px;display:inline-block;">Browse Products</a>
+        </div>`;
+    }
+
+    if (!id || typeof SINKLY_PRODUCTS === 'undefined') { notFound(); return; }
+    const p = SINKLY_PRODUCTS.find(x => x.id === id);
+    if (!p) { notFound(); return; }
+
+    document.title = p.name + ' — Sinkly';
+
+    // ── Determine variant mode ───────────────
+    const hasVariants = Array.isArray(p.variants) && p.variants.length > 0;
+    let activeVariantIdx = 0;
+
+    // ── Helpers ─────────────────────────────
+    function priceHTML() {
+      return p.salePrice
+        ? `<span class="pdp-price">$${p.salePrice.toFixed(2)} <span class="pdp-cad">CAD</span></span>
+           <span class="pdp-price-orig">$${p.price.toFixed(2)}</span>
+           <span class="pdp-savings">Save $${(p.price - p.salePrice).toFixed(2)}</span>`
+        : `<span class="pdp-price">$${p.price.toFixed(2)} <span class="pdp-cad">CAD</span></span>`;
+    }
+
+    function galleryHTML(images) {
+      if (!images || images.length === 0) {
+        return `<div class="pdp-main-img placeholder-img"></div>`;
+      }
+      const thumbs = images.map((src, i) => `
+        <button class="pdp-thumb${i === 0 ? ' active' : ''}" data-src="${src}" type="button">
+          <img src="${src}" alt="" />
+        </button>`).join('');
+      return `
+        <div class="pdp-gallery-main">
+          <img id="pdpMainImg" src="${images[0]}" alt="${p.name}" />
+        </div>
+        ${images.length > 1 ? `<div class="pdp-thumbnails">${thumbs}</div>` : ''}
+      `;
+    }
+
+    function swatchesHTML(items, activeIdx) {
+      return items.map((item, i) => {
+        const name = item.color || item.name;
+        const hex  = item.hex;
+        return `
+          <label class="pdp-swatch-label" title="${name}">
+            <input type="radio" name="pdp-color" value="${i}" ${i === activeIdx ? 'checked' : ''} style="display:none;">
+            <span class="pdp-swatch${i === activeIdx ? ' selected' : ''}" style="background:${hex};"></span>
+            <span class="pdp-swatch-name">${name}</span>
+          </label>`;
+      }).join('');
+    }
+
+    function featuresHTML(features) {
+      if (!features || features.length === 0) return '';
+      return `
+        <div class="pdp-section">
+          <p class="pdp-section-label">Specifications</p>
+          <ul class="pdp-features">
+            ${features.map(f => `<li>${f}</li>`).join('')}
+          </ul>
+        </div>`;
+    }
+
+    // ── Initial render ───────────────────────
+    function buildPage() {
+      const swatchItems = hasVariants ? p.variants : (p.colors || []);
+      const variant     = hasVariants ? p.variants[activeVariantIdx] : null;
+      const images      = variant ? variant.images : null;
+      const sku         = variant ? variant.sku    : null;
+      const features    = variant ? variant.features : null;
+
+      container.innerHTML = `
+        <div class="pdp-breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <a href="${p.page}">${p.category}</a>
+          <span>›</span>
+          <span>${p.name}</span>
+        </div>
+
+        <div class="pdp-layout">
+
+          <div class="pdp-gallery" id="pdpGalleryWrap">
+            ${galleryHTML(images)}
+          </div>
+
+          <div class="pdp-info">
+            <p class="pdp-category">${p.category}</p>
+            <h1 class="pdp-title">${p.name}</h1>
+
+            ${sku ? `<p class="pdp-sku">SKU: <strong id="pdpSku">${sku}</strong></p>` : ''}
+
+            <div class="pdp-price-row">${priceHTML()}</div>
+
+            ${swatchItems.length > 1 ? `
+              <div class="pdp-section">
+                <p class="pdp-section-label">Finish — <span id="pdpSelectedColor">${hasVariants ? p.variants[activeVariantIdx].color : p.colors[0].name}</span></p>
+                <div class="pdp-swatches" id="pdpSwatches">
+                  ${swatchesHTML(swatchItems, activeVariantIdx)}
+                </div>
+              </div>
+            ` : ''}
+
+            <div id="pdpFeaturesWrap">${featuresHTML(features)}</div>
+
+            <div class="pdp-section">
+              <p class="pdp-section-label">Quantity</p>
+              <div class="pdp-qty">
+                <button class="qty-btn" id="qtyMinus" type="button">−</button>
+                <span class="qty-value" id="qtyVal">1</span>
+                <button class="qty-btn" id="qtyPlus"  type="button">+</button>
+              </div>
+            </div>
+
+            <div class="pdp-actions">
+              <button class="btn btn--primary pdp-atc" id="pdpAddToCart" type="button">Add to Cart</button>
+              <a href="${p.page}" class="pdp-back-btn">← Back to ${p.category}</a>
+            </div>
+
+            <div class="pdp-meta">
+              <p>✓ Free shipping on orders over $300</p>
+              <p>✓ Canada-wide delivery</p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      wireEvents();
+    }
+
+    // ── Wire interactions ────────────────────
+    function wireEvents() {
+
+      // Thumbnail gallery clicks
+      container.addEventListener('click', e => {
+        const thumb = e.target.closest('.pdp-thumb');
+        if (thumb) {
+          const src = thumb.dataset.src;
+          const mainImg = document.getElementById('pdpMainImg');
+          if (mainImg) mainImg.src = src;
+          container.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        }
+      });
+
+      // Swatch / variant selection
+      container.addEventListener('change', e => {
+        if (e.target.name !== 'pdp-color') return;
+        const idx = parseInt(e.target.value, 10);
+
+        if (hasVariants) {
+          activeVariantIdx = idx;
+          const variant = p.variants[idx];
+
+          // Update selected label
+          const label = document.getElementById('pdpSelectedColor');
+          if (label) label.textContent = variant.color;
+
+          // Update swatch rings
+          container.querySelectorAll('.pdp-swatch').forEach((s, i) => {
+            s.classList.toggle('selected', i === idx);
+          });
+
+          // Update SKU
+          const skuEl = document.getElementById('pdpSku');
+          if (skuEl) skuEl.textContent = variant.sku;
+
+          // Update gallery
+          const galleryWrap = document.getElementById('pdpGalleryWrap');
+          if (galleryWrap) galleryWrap.innerHTML = galleryHTML(variant.images);
+
+          // Update features
+          const featWrap = document.getElementById('pdpFeaturesWrap');
+          if (featWrap) featWrap.innerHTML = featuresHTML(variant.features);
+
+        } else {
+          // Old colors system — just update label + ring
+          const color = p.colors[idx];
+          const label = document.getElementById('pdpSelectedColor');
+          if (label) label.textContent = color.name;
+          container.querySelectorAll('.pdp-swatch').forEach((s, i) => {
+            s.classList.toggle('selected', i === idx);
+          });
+        }
+      });
+
+      // Qty controls
+      let qty = 1;
+      const qtyValEl = document.getElementById('qtyVal');
+      document.getElementById('qtyMinus').addEventListener('click', () => {
+        if (qty > 1) { qty--; qtyValEl.textContent = qty; }
+      });
+      document.getElementById('qtyPlus').addEventListener('click', () => {
+        qty++;
+        qtyValEl.textContent = qty;
+      });
+
+      // Add to cart — passes selected variant index so SKU is exact
+      document.getElementById('pdpAddToCart').addEventListener('click', () => {
+        for (let i = 0; i < qty; i++) addToCart(p.id, activeVariantIdx);
+      });
+    }
+
+    buildPage();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Cancelled — Sinkly</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .cancel-page {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      padding: 80px 24px;
+    }
+    .cancel-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 56px 48px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.07);
+    }
+    .cancel-icon {
+      width: 72px; height: 72px;
+      background: #fdf4f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      color: #c0392b;
+    }
+    .cancel-card h1 {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .cancel-card p {
+      color: var(--taupe-dk);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+    .cancel-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <p>Free shipping on orders over $300 · Canada-wide delivery</p>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo"><img src="logo.png" alt="Sinkly" /></a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Sinks <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-sinks.html">Kitchen Sinks</a>
+              <a href="bathroom-sinks.html">Bathroom Sinks</a>
+              <a href="custom-sinks.html">Custom Sinks</a>
+            </div></div>
+          </li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Faucets <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-faucets.html">Kitchen Faucets</a>
+              <a href="bathroom-faucets.html">Bathroom Faucets</a>
+            </div></div>
+          </li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About Us</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="region-btn">Canada | CAD $</button>
+        <div class="header__divider"></div>
+        <button class="icon-btn cart-btn" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count">0</span></button>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cancel-page">
+      <div class="cancel-card">
+        <div class="cancel-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <h1>Payment Cancelled</h1>
+        <p>No charge was made. Your cart is still saved — head back whenever you're ready to complete your order.</p>
+        <div class="cancel-actions">
+          <a href="cart.html" class="btn btn--primary">Back to Cart</a>
+          <a href="shop.html" class="btn btn--outline">Keep Browsing</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom"><p>© 2026 Sinkly. All rights reserved.</p><p>Based in Canada 🇨🇦</p></div>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

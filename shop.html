@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Sinkly</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <p>Free shipping on orders over $300 · Canada-wide delivery</p>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo"><img src="logo.png" alt="Sinkly" /></a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Sinks <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-sinks.html">Kitchen Sinks</a>
+              <a href="bathroom-sinks.html">Bathroom Sinks</a>
+              <a href="custom-sinks.html">Custom Sinks</a>
+            </div></div>
+          </li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Faucets <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-faucets.html">Kitchen Faucets</a>
+              <a href="bathroom-faucets.html">Bathroom Faucets</a>
+            </div></div>
+          </li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About Us</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="region-btn">Canada | CAD $ <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="header__divider"></div>
+        <button class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <button class="icon-btn" aria-label="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="icon-btn cart-btn" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count">0</span></button>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav__inner"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="mobile-nav__group"><span class="mobile-nav__label">Sinks</span><a href="kitchen-sinks.html" class="mobile-nav__sub">Kitchen Sinks</a><a href="bathroom-sinks.html" class="mobile-nav__sub">Bathroom Sinks</a><a href="custom-sinks.html" class="mobile-nav__sub">Custom Sinks</a></li>
+        <li class="mobile-nav__group"><span class="mobile-nav__label">Faucets</span><a href="kitchen-faucets.html" class="mobile-nav__sub">Kitchen Faucets</a><a href="bathroom-faucets.html" class="mobile-nav__sub">Bathroom Faucets</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul></div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section" style="background: var(--bg); padding-top: 64px;">
+      <div class="container">
+        <div class="section-header" style="text-align: left; margin-bottom: 48px;">
+          <p class="section-label">Our Products</p>
+          <h1 style="font-family: var(--font-head); font-size: clamp(28px, 3.5vw, 44px); font-weight: 500; color: var(--navy);">Browse Our Collection</h1>
+        </div>
+
+        <!-- SINKS -->
+        <div class="shop-group">
+          <h2 class="shop-group__title">Sinks</h2>
+          <div class="shop-cards">
+            <a href="kitchen-sinks.html" class="shop-card">
+              <div class="shop-card__img"><img src="kitchen sink template.png" alt="Kitchen Sinks" /></div>
+              <div class="shop-card__footer">Kitchen Sinks <span>→</span></div>
+            </a>
+            <a href="bathroom-sinks.html" class="shop-card">
+              <div class="shop-card__img"><img src="bathroom sink template.png" alt="Bathroom Sinks" /></div>
+              <div class="shop-card__footer">Bathroom Sinks <span>→</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- FAUCETS -->
+        <div class="shop-group">
+          <h2 class="shop-group__title">Faucets</h2>
+          <div class="shop-cards">
+            <a href="kitchen-faucets.html" class="shop-card">
+              <div class="shop-card__img"><img src="kitchen faucet template.png" alt="Kitchen Faucets" /></div>
+              <div class="shop-card__footer">Kitchen Faucets <span>→</span></div>
+            </a>
+            <a href="bathroom-faucets.html" class="shop-card">
+              <div class="shop-card__img"><img src="bathroom faucet template.png" alt="Bathroom Faucets" /></div>
+              <div class="shop-card__footer">Bathroom Faucets <span>→</span></div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="logo.png" alt="Sinkly" class="footer__logo" />
+          <p>Premium sinks and faucets for the modern Canadian home.</p>
+          <div class="footer__socials"><a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h5>Shop</h5>
+            <ul>
+              <li class="footer__group-label">Sinks</li>
+              <li><a href="kitchen-sinks.html" class="footer__sub">Kitchen</a></li>
+              <li><a href="bathroom-sinks.html" class="footer__sub">Bathroom</a></li>
+              <li class="footer__group-label">Faucets</li>
+              <li><a href="kitchen-faucets.html" class="footer__sub">Kitchen</a></li>
+              <li><a href="bathroom-faucets.html" class="footer__sub">Bathroom</a></li>
+            </ul>
+          </div>
+          <div class="footer__col"><h5>Help</h5><ul><li><a href="about.html">Contact Us</a></li></ul></div>
+          <div class="footer__col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li></ul></div>
+        </div>
+      </div>
+      <div class="footer__bottom"><p>© 2026 Sinkly. All rights reserved.</p><p>Based in Canada 🇨🇦</p></div>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

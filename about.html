@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Sinkly</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <p>Free shipping on orders over $300 · Canada-wide delivery</p>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="logo.png" alt="Sinkly" />
+      </a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Sinks <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-sinks.html">Kitchen Sinks</a>
+              <a href="bathroom-sinks.html">Bathroom Sinks</a>
+              <a href="custom-sinks.html">Custom Sinks</a>
+            </div></div>
+          </li>
+          <li class="nav__item nav__item--has-drop">
+            <a href="#" class="nav__link">Faucets <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav__dropdown"><div class="nav__dropdown__inner">
+              <a href="kitchen-faucets.html">Kitchen Faucets</a>
+              <a href="bathroom-faucets.html">Bathroom Faucets</a>
+            </div></div>
+          </li>
+          <li class="nav__item"><a href="about.html" class="nav__link nav__link--active">About Us</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="region-btn">Canada | CAD $ <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="header__divider"></div>
+        <button class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <button class="icon-btn" aria-label="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button class="icon-btn cart-btn" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count">0</span></button>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav__inner">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="mobile-nav__group">
+            <span class="mobile-nav__label">Sinks</span>
+            <a href="kitchen-sinks.html" class="mobile-nav__sub">Kitchen Sinks</a>
+            <a href="bathroom-sinks.html" class="mobile-nav__sub">Bathroom Sinks</a>
+          </li>
+          <li class="mobile-nav__group">
+            <span class="mobile-nav__label">Faucets</span>
+            <a href="kitchen-faucets.html" class="mobile-nav__sub">Kitchen Faucets</a>
+            <a href="bathroom-faucets.html" class="mobile-nav__sub">Bathroom Faucets</a>
+          </li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="page-hero__content">
+        <p class="hero__eyebrow">Who We Are</p>
+        <h1 class="page-hero__heading">Built for the way you live</h1>
+        <p class="page-hero__sub">A Canadian company dedicated to quality sinks and faucets for every home.</p>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section class="about section">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__img placeholder-img"></div>
+          <div class="about__text">
+            <p class="section-label">Our Story</p>
+            <h2>Where it all began</h2>
+            <p>At Sinkly, we believe the details matter. Every sink, every faucet, every finish is chosen with intention — to bring lasting quality and quiet elegance to the spaces you use every day.</p>
+            <p>Based in Canada, our products are designed for real homes and real lives. We started with a simple idea: that the fixtures in your home should be as thoughtfully designed as everything else.</p>
+            <p>From sleek kitchen sinks to refined bathroom faucets, every Sinkly product is built to last and made to impress.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="brand-strip section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 40px;">
+          <p class="section-label">What drives us</p>
+          <h2>Our Values</h2>
+        </div>
+        <div class="brand-strip__grid">
+          <div class="brand-strip__item">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div><h4>Quality First</h4><p>Every product is built to last</p></div>
+          </div>
+          <div class="brand-strip__item">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <div><h4>Thoughtful Design</h4><p>Function meets elegance</p></div>
+          </div>
+          <div class="brand-strip__item">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><h4>Based in Canada</h4><p>Proudly Canadian</p></div>
+          </div>
+          <div class="brand-strip__item">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.11-1.11a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><h4>Always Here</h4><p>Support 7 days a week</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="newsletter section section--taupe">
+      <div class="container">
+        <div class="newsletter__inner">
+          <h2>Get in touch</h2>
+          <p>Have a question about our products? We'd love to hear from you.</p>
+          <form class="newsletter__form" onsubmit="return false;" style="flex-direction: column; gap: 12px; max-width: 480px; margin: 0 auto;">
+            <input type="text" placeholder="Your name" style="padding: 13px 18px; border: 2px solid rgba(1,17,32,0.2); border-radius: 8px; font-family: inherit; font-size: 14px; background: rgba(255,255,255,0.5); color: #141920; outline: none;" />
+            <input type="email" placeholder="Your email address" />
+            <textarea placeholder="Your message" rows="4" style="padding: 13px 18px; border: 2px solid rgba(1,17,32,0.2); border-radius: 8px; font-family: inherit; font-size: 14px; background: rgba(255,255,255,0.5); color: #141920; outline: none; resize: vertical;"></textarea>
+            <button type="submit" class="btn btn--primary" style="align-self: flex-start;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="logo.png" alt="Sinkly" class="footer__logo" />
+          <p>Premium sinks and faucets for the modern Canadian home.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col"><h5>Shop</h5><ul><li class="footer__group-label">Sinks</li><li><a href="kitchen-sinks.html" class="footer__sub">Kitchen</a></li><li><a href="bathroom-sinks.html" class="footer__sub">Bathroom</a></li><li class="footer__group-label">Faucets</li><li><a href="kitchen-faucets.html" class="footer__sub">Kitchen</a></li><li><a href="bathroom-faucets.html" class="footer__sub">Bathroom</a></li></ul></div>
+          <div class="footer__col"><h5>Help</h5><ul><li><a href="about.html">Contact Us</a></li></ul></div>
+          <div class="footer__col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li></ul></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Sinkly. All rights reserved.</p>
+        <p>Based in Canada 🇨🇦</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
