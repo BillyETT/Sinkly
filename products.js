@@ -24,7 +24,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY10001',
         images: [
-          'bathroom sinks/vessel 10001.png',
+          'bathroom sinks/10001.png',
         ],
         features: []
       }
@@ -43,7 +43,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY10002',
         images: [
-          'bathroom sinks/vessel 10002.png',
+          'bathroom sinks/10002.png',
         ],
         features: []
       }
@@ -62,7 +62,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY6050',
         images: [
-          'bathroom sinks/vessel bowl 6050.png',
+          'bathroom sinks/6050.png',
         ],
         features: [
           'OD: 15-3/4″ × 6-3/4″',
@@ -88,7 +88,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY1310',
         images: [
-          'bathroom sinks/oval undermount 1310.png',
+          'bathroom sinks/1310.png',
         ],
         features: []
       }
@@ -107,7 +107,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY1714',
         images: [
-          'bathroom sinks/oval undermount 1714.png',
+          'bathroom sinks/1714.png',
         ],
         features: [
           'OD: 19-1/2″ × 15-3/4″',
@@ -132,7 +132,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY1611',
         images: [
-          'bathroom sinks/rectangle undermount 1611.png',
+          'bathroom sinks/1611.png',
         ],
         features: [
           'OD: 18″ × 13″',
@@ -155,7 +155,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY1612',
         images: [
-          'bathroom sinks/rectangle undermount 1612.png',
+          'bathroom sinks/1612.png',
         ],
         features: [
           'OD: 18″ × 14-3/8″ × 7-1/8″',
@@ -178,7 +178,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY1813',
         images: [
-          'bathroom sinks/rectangle undermount 1813.png',
+          'bathroom sinks/1813.png',
         ],
         features: [
           'OD: 20-1/8″ × 15″',
@@ -201,7 +201,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY1812',
         images: [
-          'bathroom sinks/rectangle undermount 1812.png',
+          'bathroom sinks/1812.png',
         ],
         features: [
           'OD: 20-3/4″ × 14-5/8″',
@@ -226,7 +226,7 @@ const SINKLY_PRODUCTS = [
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY1011',
         images: [
-          'bathroom sinks/top mount 1011.png',
+          'bathroom sinks/1011.png',
         ],
         features: [
           'OD: 20-1/2″ × 17-7/8″',
