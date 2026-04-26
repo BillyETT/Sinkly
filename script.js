@@ -195,13 +195,31 @@ const SHIPPING_RATES = {
   ontario: { standard: 49,  express: 99  },
   canada:  { standard: 79,  express: 149 },
 };
+const FAUCET_SHIPPING_RATES = {
+  gta:     { standard: 12,  express: 22  },
+  ontario: { standard: 16,  express: 32  },
+  canada:  { standard: 22,  express: 45  },
+};
 const FREE_SHIP_THRESHOLD = 500;
+
+function cartHasSink() {
+  if (typeof SINKLY_PRODUCTS === 'undefined') return false;
+  return getCart().some(item => {
+    const pid = item.productId || item.id;
+    return pid.startsWith('ks-') || pid.startsWith('bs-');
+  });
+}
+
+function getActiveRates() {
+  return cartHasSink() ? SHIPPING_RATES[cartRegion] : FAUCET_SHIPPING_RATES[cartRegion];
+}
 
 function getShippingFee(subtotal) {
   if (cartFulfillment === 'pickup') return 0;
-  if (cartExpress) return SHIPPING_RATES[cartRegion].express;
+  const rates = getActiveRates();
+  if (cartExpress) return rates.express;
   if (subtotal >= FREE_SHIP_THRESHOLD) return 0;
-  return SHIPPING_RATES[cartRegion].standard;
+  return rates.standard;
 }
 
 // ── CART PAGE RENDERER ───────────────────────
@@ -271,6 +289,7 @@ function renderCartSummary() {
   const total           = subtotal + fee;
   const isFreeStandard  = cartFulfillment === 'delivery' && !cartExpress && subtotal >= FREE_SHIP_THRESHOLD;
 
+  const activeRates     = getActiveRates();
   const shippingDisplay = cartFulfillment === 'pickup'
     ? 'Free — Pickup'
     : isFreeStandard
@@ -314,14 +333,14 @@ function renderCartSummary() {
             <input type="radio" name="speed" value="standard" ${!cartExpress ? 'checked' : ''} onchange="setExpress(false)">
             <div class="fulfillment-opt__text">
               <span class="fulfillment-opt__label">Standard</span>
-              <span class="fulfillment-opt__sub">4–10 business days &middot; ${isFreeStandard ? 'Free' : '$' + SHIPPING_RATES[cartRegion].standard}</span>
+              <span class="fulfillment-opt__sub">4–10 business days &middot; ${isFreeStandard ? 'Free' : '$' + activeRates.standard}</span>
             </div>
           </label>
           <label class="fulfillment-opt${cartExpress ? ' fulfillment-opt--active' : ''}">
             <input type="radio" name="speed" value="express" ${cartExpress ? 'checked' : ''} onchange="setExpress(true)">
             <div class="fulfillment-opt__text">
               <span class="fulfillment-opt__label">Express</span>
-              <span class="fulfillment-opt__sub">2–3 business days &middot; $${SHIPPING_RATES[cartRegion].express} &middot; Full carrier rate</span>
+              <span class="fulfillment-opt__sub">2–3 business days &middot; $${activeRates.express} &middot; Full carrier rate</span>
             </div>
           </label>
         </div>

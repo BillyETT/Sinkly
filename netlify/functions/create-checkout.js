@@ -76,16 +76,22 @@ const VARIANT_PRICES = {
 };
 
 // ── Shipping rates (CAD cents, server-side authoritative) ──────────────────
-const SHIPPING_RATES = {
+const SINK_SHIPPING_RATES = {
   gta:     { standard: 2500,  express: 6000  },
   ontario: { standard: 4900,  express: 9900  },
   canada:  { standard: 7900,  express: 14900 },
 };
+const FAUCET_SHIPPING_RATES = {
+  gta:     { standard: 1200,  express: 2200  },
+  ontario: { standard: 1600,  express: 3200  },
+  canada:  { standard: 2200,  express: 4500  },
+};
 const FREE_SHIP_THRESHOLD = 50000; // $500 CAD
 
-function calcShippingCents(subtotal, fulfillment, region, express) {
+function calcShippingCents(subtotal, fulfillment, region, express, hasSink) {
   if (fulfillment === 'pickup') return 0;
-  const rates = SHIPPING_RATES[region] || SHIPPING_RATES.canada;
+  const table = hasSink ? SINK_SHIPPING_RATES : FAUCET_SHIPPING_RATES;
+  const rates = table[region] || table.canada;
   if (express) return rates.express;
   if (subtotal >= FREE_SHIP_THRESHOLD) return 0;
   return rates.standard;
@@ -142,8 +148,9 @@ exports.handler = async (event) => {
   }
 
   // Add shipping line item (server-side validated)
-  const safeRegion = SHIPPING_RATES[region] ? region : 'canada';
-  const shippingCents = calcShippingCents(subtotalCents, fulfillment, safeRegion, express);
+  const safeRegion    = SINK_SHIPPING_RATES[region] ? region : 'canada';
+  const hasSink       = items.some(i => i.productId && (i.productId.startsWith('ks-') || i.productId.startsWith('bs-')));
+  const shippingCents = calcShippingCents(subtotalCents, fulfillment, safeRegion, express, hasSink);
 
   if (shippingCents > 0) {
     const regionLabels = { gta: 'GTA — Local Delivery', ontario: 'Ontario', canada: 'Canada-wide' };
