@@ -171,6 +171,26 @@ document.addEventListener('click', e => {
   }
 });
 
+// ── SHIPPING STATE ───────────────────────────
+let cartFulfillment = 'delivery';
+let cartRegion      = 'gta';
+let cartExpress     = false;
+let cartPhone       = '';
+
+const SHIPPING_RATES = {
+  gta:     { standard: 25,  express: 60  },
+  ontario: { standard: 49,  express: 99  },
+  canada:  { standard: 79,  express: 149 },
+};
+const FREE_SHIP_THRESHOLD = 500;
+
+function getShippingFee(subtotal) {
+  if (cartFulfillment === 'pickup') return 0;
+  if (cartExpress) return SHIPPING_RATES[cartRegion].express;
+  if (subtotal >= FREE_SHIP_THRESHOLD) return 0;
+  return SHIPPING_RATES[cartRegion].standard;
+}
+
 // ── CART PAGE RENDERER ───────────────────────
 function renderCartPage() {
   const container = document.getElementById('cart-items-container');
@@ -226,14 +246,66 @@ function renderCartPage() {
     `;
   }).join('');
 
-  const subtotal = getCartTotal();
-  const shipping = subtotal >= 300 ? 0 : 15;
-  const total    = subtotal + shipping;
+  renderCartSummary();
+}
+
+function renderCartSummary() {
+  const summaryEl = document.getElementById('cart-summary');
+  if (!summaryEl) return;
+
+  const subtotal        = getCartTotal();
+  const fee             = getShippingFee(subtotal);
+  const total           = subtotal + fee;
+  const isFreeStandard  = cartFulfillment === 'delivery' && !cartExpress && subtotal >= FREE_SHIP_THRESHOLD;
+
+  const shippingDisplay = cartFulfillment === 'pickup'
+    ? 'Free — Pickup'
+    : isFreeStandard
+      ? '<span class="free-ship">Free</span>'
+      : `$${fee.toFixed(2)} CAD`;
 
   summaryEl.innerHTML = `
     <div class="cart-summary__row"><span>Subtotal</span><span>$${subtotal.toFixed(2)} CAD</span></div>
-    <div class="cart-summary__row"><span>Shipping</span><span>${shipping === 0 ? '<span class="free-ship">Free</span>' : '$' + shipping.toFixed(2)}</span></div>
-    ${subtotal < 300 ? `<div class="cart-summary__row" style="font-size:0.8rem;color:var(--taupe-dk);">Add $${(300 - subtotal).toFixed(2)} more for free shipping</div>` : ''}
+
+    <div class="fulfillment-toggle">
+      <label class="fulfillment-opt${cartFulfillment === 'pickup' ? ' fulfillment-opt--active' : ''}">
+        <input type="radio" name="fulfillment" value="pickup" ${cartFulfillment === 'pickup' ? 'checked' : ''} onchange="setFulfillment('pickup')">
+        <div class="fulfillment-opt__text">
+          <span class="fulfillment-opt__label">Pickup</span>
+          <span class="fulfillment-opt__sub">Ready in 1–2 business days &middot; Free</span>
+        </div>
+      </label>
+      <label class="fulfillment-opt${cartFulfillment === 'delivery' ? ' fulfillment-opt--active' : ''}">
+        <input type="radio" name="fulfillment" value="delivery" ${cartFulfillment === 'delivery' ? 'checked' : ''} onchange="setFulfillment('delivery')">
+        <div class="fulfillment-opt__text">
+          <span class="fulfillment-opt__label">Delivery</span>
+          <span class="fulfillment-opt__sub">Canada-wide shipping</span>
+        </div>
+      </label>
+    </div>
+
+    ${cartFulfillment === 'pickup' ? `
+      <div class="pickup-section">
+        <label class="pickup-label">Phone number — we'll text you when it's ready</label>
+        <input type="tel" id="pickup-phone" class="pickup-phone" placeholder="e.g. 647-555-0123" value="${cartPhone}" oninput="cartPhone=this.value">
+      </div>
+    ` : `
+      <div class="delivery-section">
+        <select id="delivery-region" class="delivery-select" onchange="setRegion(this.value)">
+          <option value="gta"     ${cartRegion === 'gta'     ? 'selected' : ''}>GTA — Local Delivery ($25)</option>
+          <option value="ontario" ${cartRegion === 'ontario' ? 'selected' : ''}>Ontario, outside GTA ($49)</option>
+          <option value="canada"  ${cartRegion === 'canada'  ? 'selected' : ''}>Rest of Canada ($79)</option>
+        </select>
+        <label class="express-label">
+          <input type="checkbox" ${cartExpress ? 'checked' : ''} onchange="setExpress(this.checked)">
+          <span>Express shipping (full carrier rate)</span>
+        </label>
+        ${!cartExpress && subtotal < FREE_SHIP_THRESHOLD ? `<p class="ship-note">Add <strong>$${(FREE_SHIP_THRESHOLD - subtotal).toFixed(2)}</strong> more for free standard shipping</p>` : ''}
+        ${isFreeStandard ? `<p class="ship-note ship-note--green">Free standard shipping applied!</p>` : ''}
+      </div>
+    `}
+
+    <div class="cart-summary__row"><span>Shipping</span><span>${shippingDisplay}</span></div>
     <div class="cart-summary__row cart-summary__total"><span>Total</span><span>$${total.toFixed(2)} CAD</span></div>
     <button class="btn btn--primary" id="checkoutBtn" style="width:100%;text-align:center;margin-top:20px;">Proceed to Checkout</button>
     <p id="checkout-error" style="color:#c0392b;font-size:0.82rem;margin-top:10px;display:none;text-align:center;"></p>
@@ -243,11 +315,21 @@ function renderCartPage() {
   document.getElementById('checkoutBtn').addEventListener('click', startCheckout);
 }
 
+function setFulfillment(val) { cartFulfillment = val; renderCartSummary(); }
+function setRegion(val)      { cartRegion = val;      renderCartSummary(); }
+function setExpress(val)     { cartExpress = val;     renderCartSummary(); }
+
 // ── STRIPE CHECKOUT ──────────────────────────
 async function startCheckout() {
-  const btn = document.getElementById('checkoutBtn');
+  const btn   = document.getElementById('checkoutBtn');
   const errEl = document.getElementById('checkout-error');
   if (!btn) return;
+
+  if (cartFulfillment === 'pickup' && cartPhone.trim().length < 7) {
+    if (errEl) { errEl.textContent = 'Please enter your phone number so we can notify you when your order is ready.'; errEl.style.display = 'block'; }
+    document.getElementById('pickup-phone')?.focus();
+    return;
+  }
 
   btn.textContent = 'Redirecting…';
   btn.disabled = true;

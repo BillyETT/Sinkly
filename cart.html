@@ -6,6 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cart — Sinkly</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .fulfillment-toggle { display: flex; flex-direction: column; gap: 8px; margin: 18px 0 14px; }
+    .fulfillment-opt { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1.5px solid #e0dbd4; border-radius: 10px; cursor: pointer; transition: border-color 0.18s, background 0.18s; }
+    .fulfillment-opt:hover { border-color: #b5a99a; }
+    .fulfillment-opt--active { border-color: #1a1a1a; background: #faf9f7; }
+    .fulfillment-opt input[type="radio"] { accent-color: #1a1a1a; width: 16px; height: 16px; flex-shrink: 0; }
+    .fulfillment-opt__text { display: flex; flex-direction: column; gap: 2px; }
+    .fulfillment-opt__label { font-weight: 600; font-size: 0.9rem; color: #1a1a1a; }
+    .fulfillment-opt__sub { font-size: 0.78rem; color: #888; }
+
+    .pickup-section { margin-bottom: 14px; }
+    .pickup-label { display: block; font-size: 0.82rem; font-weight: 500; color: #444; margin-bottom: 7px; }
+    .pickup-phone { width: 100%; padding: 10px 13px; border: 1.5px solid #e0dbd4; border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; transition: border-color 0.18s; }
+    .pickup-phone:focus { border-color: #1a1a1a; }
+
+    .delivery-section { margin-bottom: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .delivery-select { width: 100%; padding: 10px 13px; border: 1.5px solid #e0dbd4; border-radius: 8px; font-size: 0.88rem; font-family: inherit; background: #fff; outline: none; cursor: pointer; transition: border-color 0.18s; }
+    .delivery-select:focus { border-color: #1a1a1a; }
+    .express-label { display: flex; align-items: center; gap: 9px; font-size: 0.85rem; color: #333; cursor: pointer; }
+    .express-label input[type="checkbox"] { accent-color: #1a1a1a; width: 15px; height: 15px; flex-shrink: 0; }
+    .ship-note { font-size: 0.78rem; color: #888; margin: 0; }
+    .ship-note--green { color: #2e7d32; font-weight: 500; }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -13,7 +36,7 @@
 <body>
 
   <div class="announcement-bar">
-    <p>Free shipping on orders over $300 · Canada-wide delivery</p>
+    <p>Free shipping on orders over $500 · Canada-wide delivery · Free local pickup</p>
   </div>
 
   <header class="header" id="header">
