@@ -59,6 +59,22 @@ const PRODUCT_CATALOG = {
   'bf-30017': { name: 'Widespread Two-Handle Faucet',          price:  9000, salePrice: 6000 },
 };
 
+// ── Per-variant price overrides (SKU → CAD cents) ─────────────────────────
+const VARIANT_PRICES = {
+  'SINKLYSS3219':  { price: 19900, salePrice: null  },
+  'SINKLYGS3219':  { price: 22000, salePrice: null  },
+  'SINKLYBS3219':  { price: 24900, salePrice: 19900 },
+  'SINKLYSD3219':  { price: 21000, salePrice: null  },
+  'SINKLYGD3219':  { price: 22900, salePrice: null  },
+  'SINKLYBD3219':  { price: 22900, salePrice: null  },
+  'SINKLYSTD3120': { price: 21000, salePrice: null  },
+  'SINKLYGTD3120': { price: 22900, salePrice: null  },
+  'SINKLYBTD3120': { price: 22900, salePrice: null  },
+  'SINKLYS20001':  { price: 31000, salePrice: null  },
+  'SINKLYG20002':  { price: 41100, salePrice: 32900 },
+  'SINKLYB20003':  { price: 32900, salePrice: null  },
+};
+
 // ── Shipping rates (CAD cents, server-side authoritative) ──────────────────
 const SHIPPING_RATES = {
   gta:     { standard: 2500,  express: 6000  },
@@ -103,7 +119,9 @@ exports.handler = async (event) => {
     const product = PRODUCT_CATALOG[item.productId];
     if (!product) continue;
 
-    const unitAmount = product.salePrice ?? product.price;
+    const variantPricing = item.variantSku ? VARIANT_PRICES[item.variantSku] : null;
+    const pricing        = variantPricing || product;
+    const unitAmount     = pricing.salePrice ?? pricing.price;
     subtotalCents += unitAmount * item.qty;
 
     lineItems.push({

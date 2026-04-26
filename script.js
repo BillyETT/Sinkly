@@ -133,13 +133,19 @@ function setQty(cartKey, qty) {
   saveCart(cart);
 }
 
+function getVariantEffectivePrice(p, variantIdx) {
+  const v = p.variants?.[variantIdx ?? 0];
+  if (v && 'price' in v) return 'salePrice' in v ? (v.salePrice ?? v.price) : v.price;
+  return p.salePrice ?? p.price;
+}
+
 function getCartTotal() {
   if (typeof SINKLY_PRODUCTS === 'undefined') return 0;
   return getCart().reduce((sum, item) => {
     const pid = item.productId || item.id;
     const p   = SINKLY_PRODUCTS.find(x => x.id === pid);
     if (!p) return sum + ((item._price || 0) * item.qty);
-    return sum + (p.salePrice ?? p.price) * item.qty;
+    return sum + getVariantEffectivePrice(p, item.variantIdx ?? 0) * item.qty;
   }, 0);
 }
 
@@ -226,7 +232,7 @@ function renderCartPage() {
     const color    = (variant && p.variants.length > 1) ? variant.color : null;
     const sku      = variant ? variant.sku : null;
     const imgSrc   = variant && variant.images && variant.images[0] ? variant.images[0] : null;
-    const price    = p ? (p.salePrice ?? p.price) : (item._price || 0);
+    const price    = p ? getVariantEffectivePrice(p, item.variantIdx ?? 0) : (item._price || 0);
     const subtotal = (price * item.qty).toFixed(2);
 
     return `
@@ -362,6 +368,7 @@ async function startCheckout() {
       productId:    pid,
       variantIdx:   item.variantIdx ?? 0,
       variantColor: variant ? variant.color : null,
+      variantSku:   variant ? variant.sku   : null,
       qty:          item.qty,
     };
   });

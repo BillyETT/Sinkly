@@ -250,9 +250,9 @@ const SINKLY_PRODUCTS = [
     id: 'ks-s3219', name: 'Single Bowl Undermount Sink', type: 'Single Bowl | 32×19',
     category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 249, salePrice: 199,
     variants: [
-      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYSS3219', images: ['kitchen sinks/SS3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
-      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYGS3219', images: ['kitchen sinks/G3S219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
-      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYBS3219', images: ['kitchen sinks/BS3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
+      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYSS3219', price: 199, salePrice: null, images: ['kitchen sinks/SS3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
+      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYGS3219', price: 220, salePrice: null, images: ['kitchen sinks/G3S219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
+      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYBS3219', price: 249, salePrice: 199, images: ['kitchen sinks/BS3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
     ]
   },
 
@@ -283,18 +283,18 @@ const SINKLY_PRODUCTS = [
     id: 'ks-d3219', name: 'Double Bowl Undermount Sink', type: 'Double Bowl | 32×19',
     category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 229, salePrice: null,
     variants: [
-      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYSD3219', images: ['kitchen sinks/SD3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
-      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYGD3219', images: ['kitchen sinks/GD3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
-      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYBD3219', images: ['kitchen sinks/BD3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
+      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYSD3219', price: 210, salePrice: null, images: ['kitchen sinks/SD3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
+      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYGD3219', price: 229, salePrice: null, images: ['kitchen sinks/GD3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
+      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYBD3219', price: 229, salePrice: null, images: ['kitchen sinks/BD3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
     ]
   },
   {
     id: 'ks-td3120', name: 'Double Bowl Drop-In Sink', type: 'Double Bowl Drop-In',
     category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 229, salePrice: null,
     variants: [
-      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYSTD3120', images: ['kitchen sinks/STD3120.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Drop-In Top-Mount Installation', '3 Pre-Drilled Faucet Holes'] },
-      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYGTD3120', images: ['kitchen sinks/GTD3120.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Drop-In Top-Mount Installation', '3 Pre-Drilled Faucet Holes'] },
-      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYBTD3120', images: ['kitchen sinks/BTD3120.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Drop-In Top-Mount Installation', '3 Pre-Drilled Faucet Holes'] },
+      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYSTD3120', price: 210, salePrice: null, images: ['kitchen sinks/STD3120.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Drop-In Top-Mount Installation', '3 Pre-Drilled Faucet Holes'] },
+      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYGTD3120', price: 229, salePrice: null, images: ['kitchen sinks/GTD3120.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Drop-In Top-Mount Installation', '3 Pre-Drilled Faucet Holes'] },
+      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYBTD3120', price: 229, salePrice: null, images: ['kitchen sinks/BTD3120.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Drop-In Top-Mount Installation', '3 Pre-Drilled Faucet Holes'] },
     ]
   },
 
@@ -330,9 +330,9 @@ const SINKLY_PRODUCTS = [
     id: 'ks-workstation', name: 'Workstation Kitchen Sink', type: 'Workstation | 32×20',
     category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 411, salePrice: 329,
     variants: [
-      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYS20001', images: ['kitchen sinks/workstation S20001.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
-      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYG20002', images: ['kitchen sinks/workstation G20002.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
-      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYB20003', images: ['kitchen sinks/workstation B20003.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
+      { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYS20001', price: 310, salePrice: null, images: ['kitchen sinks/workstation S20001.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
+      { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYG20002', price: 411, salePrice: 329, images: ['kitchen sinks/workstation G20002.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
+      { color: 'Black',           hex: '#1a1a1a', sku: 'SINKLYB20003', price: 329, salePrice: null, images: ['kitchen sinks/workstation B20003.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
     ]
   },
 

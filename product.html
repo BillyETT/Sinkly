@@ -108,12 +108,19 @@
     let activeVariantIdx = 0;
 
     // ── Helpers ─────────────────────────────
-    function priceHTML() {
-      return p.salePrice
-        ? `<span class="pdp-price">$${p.salePrice.toFixed(2)} <span class="pdp-cad">CAD</span></span>
-           <span class="pdp-price-orig">$${p.price.toFixed(2)}</span>
-           <span class="pdp-savings">Save $${(p.price - p.salePrice).toFixed(2)}</span>`
-        : `<span class="pdp-price">$${p.price.toFixed(2)} <span class="pdp-cad">CAD</span></span>`;
+    function getEffectivePrice(variantIdx) {
+      const v = p.variants?.[variantIdx];
+      if (v && 'price' in v) return { price: v.price, salePrice: 'salePrice' in v ? v.salePrice : null };
+      return { price: p.price, salePrice: p.salePrice };
+    }
+
+    function priceHTML(variantIdx) {
+      const { price, salePrice } = getEffectivePrice(variantIdx ?? activeVariantIdx);
+      return salePrice
+        ? `<span class="pdp-price">$${salePrice.toFixed(2)} <span class="pdp-cad">CAD</span></span>
+           <span class="pdp-price-orig">$${price.toFixed(2)}</span>
+           <span class="pdp-savings">Save $${(price - salePrice).toFixed(2)}</span>`
+        : `<span class="pdp-price">$${price.toFixed(2)} <span class="pdp-cad">CAD</span></span>`;
     }
 
     function galleryHTML(images) {
@@ -263,6 +270,10 @@
           // Update gallery
           const galleryWrap = document.getElementById('pdpGalleryWrap');
           if (galleryWrap) galleryWrap.innerHTML = galleryHTML(variant.images);
+
+          // Update price
+          const priceRow = document.querySelector('.pdp-price-row');
+          if (priceRow) priceRow.innerHTML = priceHTML(idx);
 
           // Update features
           const featWrap = document.getElementById('pdpFeaturesWrap');
