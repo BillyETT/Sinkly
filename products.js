@@ -539,7 +539,7 @@ const SINKLY_PRODUCTS = [
   // 30017 — Widespread two-handle (Black + Brushed Nickel) — ON SALE
   {
     id: 'bf-30017', name: 'Widespread Two-Handle Faucet', type: 'Widespread',
-    category: 'Bathroom Faucets', page: 'bathroom-faucets.html', price: 90, salePrice: 60,
+    category: 'Bathroom Faucets', page: 'bathroom-faucets.html', price: 129, salePrice: 99,
     variants: [
       { color: 'Matte Black',    hex: '#1a1a1a', sku: 'SINKLYB30017', images: ['bathroom faucets/B30017.png'], features: ['Two Handle', '3-Hole Installation', 'Height: 5-3/4″', 'Spread: 6-1/4″', 'Overall Width: 11-5/8″', 'Plumbing Fixtures Included'] },
       { color: 'Silver', hex: '#9aa0a6', sku: 'SINKLYS30017', images: ['bathroom faucets/S30017.png'], features: ['Two Handle', '3-Hole Installation', 'Height: 5-3/4″', 'Spread: 6-1/4″', 'Overall Width: 11-5/8″', 'Plumbing Fixtures Included'] },
