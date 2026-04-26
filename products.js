@@ -17,15 +17,14 @@ const SINKLY_PRODUCTS = [
     type: 'Square Vessel',
     category: 'Bathroom Sinks',
     page: 'bathroom-sinks.html',
-    price: 107,
-    salePrice: 71,
+    price: 111,
+    salePrice: 89,
     variants: [
       {
         color: 'White', hex: '#f0ede8',
         sku: 'SINKLY10001',
         images: [
           'bathroom sinks/vessel 10001.png',
-          'bathroom sinks/10001.png',
         ],
         features: []
       }
@@ -45,7 +44,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY10002',
         images: [
           'bathroom sinks/vessel 10002.png',
-          'bathroom sinks/10002.png',
         ],
         features: []
       }
@@ -65,7 +63,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY6050',
         images: [
           'bathroom sinks/vessel bowl 6050.png',
-          'bathroom sinks/6050.png',
         ],
         features: [
           'OD: 15-3/4″ × 6-3/4″',
@@ -92,7 +89,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY1310',
         images: [
           'bathroom sinks/oval undermount 1310.png',
-          'bathroom sinks/1310.png',
         ],
         features: []
       }
@@ -112,7 +108,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY1714',
         images: [
           'bathroom sinks/oval undermount 1714.png',
-          'bathroom sinks/1714.png',
         ],
         features: [
           'OD: 19-1/2″ × 15-3/4″',
@@ -138,7 +133,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY1611',
         images: [
           'bathroom sinks/rectangle undermount 1611.png',
-          'bathroom sinks/1611.png',
         ],
         features: [
           'OD: 18″ × 13″',
@@ -162,7 +156,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY1612',
         images: [
           'bathroom sinks/rectangle undermount 1612.png',
-          'bathroom sinks/1612.png',
         ],
         features: [
           'OD: 18″ × 14-3/8″ × 7-1/8″',
@@ -186,7 +179,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY1813',
         images: [
           'bathroom sinks/rectangle undermount 1813.png',
-          'bathroom sinks/1813.png',
         ],
         features: [
           'OD: 20-1/8″ × 15″',
@@ -210,7 +202,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY1812',
         images: [
           'bathroom sinks/rectangle undermount 1812.png',
-          'bathroom sinks/1812.png',
         ],
         features: [
           'OD: 20-3/4″ × 14-5/8″',
@@ -236,7 +227,6 @@ const SINKLY_PRODUCTS = [
         sku: 'SINKLY1011',
         images: [
           'bathroom sinks/top mount 1011.png',
-          'bathroom sinks/1011.png',
         ],
         features: [
           'OD: 20-1/2″ × 17-7/8″',
@@ -258,7 +248,7 @@ const SINKLY_PRODUCTS = [
   // ── KITCHEN SINKS — Single Bowl (multi-color) ─
   {
     id: 'ks-s3219', name: 'Single Bowl Undermount Sink', type: 'Single Bowl | 32×19',
-    category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 264, salePrice: 176,
+    category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 249, salePrice: 199,
     variants: [
       { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYSS3219', images: ['kitchen sinks/SS3219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
       { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYGS3219', images: ['kitchen sinks/G3S219.png'], features: ['Handmade Sink — 304 Stainless Steel', '16 Gauge', 'OD: 32″ × 19″', 'ID: 30″ × 17″', 'Depth: 10″'] },
@@ -338,7 +328,7 @@ const SINKLY_PRODUCTS = [
   // ── KITCHEN SINKS — Workstation ─────────────
   {
     id: 'ks-workstation', name: 'Workstation Kitchen Sink', type: 'Workstation | 32×20',
-    category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 395, salePrice: 263,
+    category: 'Kitchen Sinks', page: 'kitchen-sinks.html', price: 411, salePrice: 329,
     variants: [
       { color: 'Stainless Steel', hex: '#8b9aab', sku: 'SINKLYS20001', images: ['kitchen sinks/workstation S20001.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
       { color: 'Gold',            hex: '#c9a84c', sku: 'SINKLYG20002', images: ['kitchen sinks/workstation G20002.png'], features: ['Handmade Sink — 304 Stainless Steel', 'Built-In Ledge for Accessories', 'Includes Cutting Board & Roll-Up Mat', '16 Gauge', 'OD: 32″ × 20″', 'Depth: 10″'] },
