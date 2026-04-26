@@ -298,7 +298,7 @@ function renderCartSummary() {
         </select>
         <label class="express-label">
           <input type="checkbox" ${cartExpress ? 'checked' : ''} onchange="setExpress(this.checked)">
-          <span>Express shipping (full carrier rate)</span>
+          <span>${cartExpress ? 'Express — 2–3 business days' : 'Standard — 4–10 business days'} ${cartExpress ? '(full carrier rate)' : ''}</span>
         </label>
         ${!cartExpress && subtotal < FREE_SHIP_THRESHOLD ? `<p class="ship-note">Add <strong>$${(FREE_SHIP_THRESHOLD - subtotal).toFixed(2)}</strong> more for free standard shipping</p>` : ''}
         ${isFreeStandard ? `<p class="ship-note ship-note--green">Free standard shipping applied!</p>` : ''}
