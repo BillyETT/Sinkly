@@ -72,6 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Re-render cart when user navigates back from Stripe (bfcache restore)
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted && document.getElementById('cart-items-container')) {
+    renderCartPage();
+  }
+});
+
 // ── CART SYSTEM ─────────────────────────────
 
 const CART_KEY = 'sinkly_cart';
@@ -292,16 +299,27 @@ function renderCartSummary() {
     ` : `
       <div class="delivery-section">
         <select id="delivery-region" class="delivery-select" onchange="setRegion(this.value)">
-          <option value="gta"     ${cartRegion === 'gta'     ? 'selected' : ''}>GTA — Local Delivery ($25)</option>
-          <option value="ontario" ${cartRegion === 'ontario' ? 'selected' : ''}>Ontario, outside GTA ($49)</option>
-          <option value="canada"  ${cartRegion === 'canada'  ? 'selected' : ''}>Rest of Canada ($79)</option>
+          <option value="gta"     ${cartRegion === 'gta'     ? 'selected' : ''}>GTA — Local Delivery</option>
+          <option value="ontario" ${cartRegion === 'ontario' ? 'selected' : ''}>Ontario, outside GTA</option>
+          <option value="canada"  ${cartRegion === 'canada'  ? 'selected' : ''}>Rest of Canada</option>
         </select>
-        <label class="express-label">
-          <input type="checkbox" ${cartExpress ? 'checked' : ''} onchange="setExpress(this.checked)">
-          <span>${cartExpress ? 'Express — 2–3 business days' : 'Standard — 4–10 business days'} ${cartExpress ? '(full carrier rate)' : ''}</span>
-        </label>
-        ${!cartExpress && subtotal < FREE_SHIP_THRESHOLD ? `<p class="ship-note">Add <strong>$${(FREE_SHIP_THRESHOLD - subtotal).toFixed(2)}</strong> more for free standard shipping</p>` : ''}
-        ${isFreeStandard ? `<p class="ship-note ship-note--green">Free standard shipping applied!</p>` : ''}
+        <div class="fulfillment-toggle" style="margin-top:8px;">
+          <label class="fulfillment-opt${!cartExpress ? ' fulfillment-opt--active' : ''}">
+            <input type="radio" name="speed" value="standard" ${!cartExpress ? 'checked' : ''} onchange="setExpress(false)">
+            <div class="fulfillment-opt__text">
+              <span class="fulfillment-opt__label">Standard</span>
+              <span class="fulfillment-opt__sub">4–10 business days &middot; ${isFreeStandard ? 'Free' : '$' + SHIPPING_RATES[cartRegion].standard}</span>
+            </div>
+          </label>
+          <label class="fulfillment-opt${cartExpress ? ' fulfillment-opt--active' : ''}">
+            <input type="radio" name="speed" value="express" ${cartExpress ? 'checked' : ''} onchange="setExpress(true)">
+            <div class="fulfillment-opt__text">
+              <span class="fulfillment-opt__label">Express</span>
+              <span class="fulfillment-opt__sub">2–3 business days &middot; $${SHIPPING_RATES[cartRegion].express} &middot; Full carrier rate</span>
+            </div>
+          </label>
+        </div>
+        ${isFreeStandard ? `<p class="ship-note ship-note--green">Free standard shipping applied!</p>` : !cartExpress && subtotal < FREE_SHIP_THRESHOLD ? `<p class="ship-note">Add <strong>$${(FREE_SHIP_THRESHOLD - subtotal).toFixed(2)}</strong> more for free standard shipping</p>` : ''}
       </div>
     `}
 
@@ -352,7 +370,7 @@ async function startCheckout() {
     const res = await fetch('/.netlify/functions/create-checkout', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ items }),
+      body:    JSON.stringify({ items, fulfillment: cartFulfillment, region: cartRegion, express: cartExpress, phone: cartPhone }),
     });
 
     const data = await res.json();
