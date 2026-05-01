@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sinkly — Product Price List</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; font-size: 12px; color: #111; padding: 30px; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .subtitle { color: #666; font-size: 11px; margin-bottom: 28px; }
+  h2 { font-size: 14px; font-weight: bold; background: #111; color: #fff; padding: 6px 10px; margin-top: 24px; margin-bottom: 0; letter-spacing: 0.05em; text-transform: uppercase; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  thead th { background: #f0f0f0; padding: 6px 10px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 2px solid #ccc; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  tbody td { padding: 6px 10px; border-bottom: 1px solid #e5e5e5; }
+  .sku { font-family: monospace; font-size: 11px; color: #444; }
+  .price-col { width: 100px; }
+  .sale-col { width: 100px; }
+  @media print {
+    body { padding: 15px; }
+    h2 { break-before: auto; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Sinkly — Product Price List</h1>
+<p class="subtitle">Fill in Price and Sale Price, then return for update</p>
+
+<h2>Kitchen Sinks</h2>
+<table>
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Product</th>
+      <th class="price-col">Price ($)</th>
+      <th class="sale-col">Sale Price ($)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="sku">SINKLYS4105</td><td>Farmhouse Apron-Front Sink</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSS3219</td><td>Single Bowl Undermount — Stainless</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYGS3219</td><td>Single Bowl Undermount — Gold</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYBS3219</td><td>Single Bowl Undermount — Black</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS2318</td><td>Compact Single Bowl 23x18</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS2903</td><td>Extra-Deep Single Bowl</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSS3018</td><td>Single Bowl 30 Inch</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSS3218</td><td>Single Bowl 32 Inch</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSD3219</td><td>Double Bowl Undermount — Stainless</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYGD3219</td><td>Double Bowl Undermount — Gold</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYBD3219</td><td>Double Bowl Undermount — Black</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSTD3120</td><td>Double Bowl Drop-In — Stainless</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYGTD3120</td><td>Double Bowl Drop-In — Gold</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYBTD3120</td><td>Double Bowl Drop-In — Black</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSD2918</td><td>Double Bowl 29 Inch</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSD3018</td><td>Equal Double Bowl 30 Inch</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYSD3118</td><td>Double Bowl 31 Inch</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYD3240</td><td>Large Double Bowl</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYD3260</td><td>Oversized Double Bowl</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS20001</td><td>Workstation Sink — Stainless</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYG20002</td><td>Workstation Sink — Gold</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYB20003</td><td>Workstation Sink — Black</td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<h2>Bathroom Sinks</h2>
+<table>
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Product</th>
+      <th class="price-col">Price ($)</th>
+      <th class="sale-col">Sale Price ($)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="sku">SINKLY10001</td><td>Modern Square Vessel Sink</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY10002</td><td>Round Vessel Basin</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY6050</td><td>Oval Vessel Bowl Sink</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY1310</td><td>Classic Oval Undermount</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY1714</td><td>Elongated Oval Undermount</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY1611</td><td>Compact Rectangular Undermount</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY1612</td><td>Slim Rectangular Undermount</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY1813</td><td>Standard Rectangular Undermount</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY1812</td><td>Deep Rectangular Undermount</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY1011</td><td>Oval Self-Rimming Drop-In</td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<h2>Kitchen Faucets</h2>
+<table>
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Product</th>
+      <th class="price-col">Price ($)</th>
+      <th class="sale-col">Sale Price ($)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="sku">SINKLYB40001</td><td>Gooseneck Pull-Down Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYB40002</td><td>Commercial Spring Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS40003</td><td>L-Shape Single Handle Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS40004</td><td>Tall Slim Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS40005</td><td>Modern Pull-Down Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS40006</td><td>Pull-Down with Deck Cover</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYB40007</td><td>Matte Black Pull-Down Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYB40008</td><td>Square Handle Pull-Down Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS40009</td><td>Single Handle Pull-Down Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYB40010</td><td>Compact Pull-Down Faucet</td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<h2>Bathroom Faucets</h2>
+<table>
+  <thead>
+    <tr>
+      <th>SKU</th>
+      <th>Product</th>
+      <th class="price-col">Price ($)</th>
+      <th class="sale-col">Sale Price ($)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="sku">SINKLY30001</td><td>Pull-Out Bathroom Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30002</td><td>Waterfall Single-Handle Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30003</td><td>Sleek Basin Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30004</td><td>Round Base Basin Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30005</td><td>Tall Vessel Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30006</td><td>Brass Single-Handle Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30007</td><td>Wall-Mount Bathroom Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30008</td><td>Modern Single-Handle Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30009</td><td>Minimalist Basin Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30010</td><td>Deck-Plate Vessel Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30011</td><td>Curved Spout Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30012</td><td>Contemporary Basin Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30013</td><td>Centerset Single-Handle Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30014</td><td>Touchless Motion Sensor Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLY30015</td><td>Angular Single-Handle Faucet</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYB30016</td><td>Arc Vessel Faucet — Black</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS30016</td><td>Arc Vessel Faucet — Silver</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYB30017</td><td>Widespread Two-Handle Faucet — Black</td><td></td><td></td></tr>
+    <tr><td class="sku">SINKLYS30017</td><td>Widespread Two-Handle Faucet — Silver</td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+</body>
+</html>

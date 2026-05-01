@@ -96,6 +96,26 @@ function saveCart(cart) {
 // addToCart(productId, variantIdx)
 // Cart item: { cartKey, productId, variantIdx, qty }
 // cartKey = variant SKU (e.g. 'SINKLYGD3219') — guarantees Gold ≠ Silver in cart
+function addIntegratedSinkToCart(sizeId, sizeLabel, slab, bowlType, price, deliveryType) {
+  const cartKey = sizeId + '-' + Date.now();
+  const cart = getCart();
+  cart.push({
+    cartKey,
+    productId: sizeId,
+    variantIdx: 0,
+    qty: 1,
+    _isIntegrated: true,
+    _slab: slab,
+    _bowlType: bowlType,
+    _size: sizeLabel,
+    _price: price,
+    _name: 'Integrated Stone Sink — ' + sizeLabel,
+    _integratedDelivery: deliveryType,
+  });
+  saveCart(cart);
+  showCartToast('Integrated Stone Sink — ' + sizeLabel);
+}
+
 function addToCart(productId, variantIdx) {
   variantIdx = (variantIdx === undefined || variantIdx === null) ? 0 : parseInt(variantIdx, 10);
   if (!productId || typeof SINKLY_PRODUCTS === 'undefined') return;
@@ -245,13 +265,16 @@ function renderCartPage() {
     const pid      = item.productId || item.id;
     const p        = typeof SINKLY_PRODUCTS !== 'undefined' ? SINKLY_PRODUCTS.find(x => x.id === pid) : null;
     const variant  = p && p.variants ? p.variants[item.variantIdx ?? 0] : null;
-    const name     = p ? p.name : 'Product';
-    const category = p ? p.category : '';
-    const color    = (variant && p.variants.length > 1) ? variant.color : null;
-    const sku      = variant ? variant.sku : null;
-    const imgSrc   = variant && variant.images && variant.images[0] ? variant.images[0] : null;
-    const price    = p ? getVariantEffectivePrice(p, item.variantIdx ?? 0) : (item._price || 0);
+    const name     = item._name || (p ? p.name : 'Product');
+    const category = item._isIntegrated ? 'Integrated Sinks' : (p ? p.category : '');
+    const color    = item._isIntegrated ? null : ((variant && p && p.variants.length > 1) ? variant.color : null);
+    const sku      = item._isIntegrated ? null : (variant ? variant.sku : null);
+    const imgSrc   = item._isIntegrated ? null : (variant && variant.images && variant.images[0] ? variant.images[0] : null);
+    const price    = item._isIntegrated ? item._price : (p ? getVariantEffectivePrice(p, item.variantIdx ?? 0) : (item._price || 0));
     const subtotal = (price * item.qty).toFixed(2);
+    const integratedDetails = item._isIntegrated
+      ? `<p class="cart-item__sku">${item._slab} · ${item._bowlType} · ${item._integratedDelivery === 'pickup' ? 'Pickup' : 'GTA Delivery'}</p>`
+      : '';
 
     return `
       <div class="cart-item" data-id="${key}">
@@ -261,6 +284,7 @@ function renderCartPage() {
         <div class="cart-item__info">
           <p class="cart-item__category">${category}${color ? ` — ${color}` : ''}</p>
           <h4 class="cart-item__name">${name}</h4>
+          ${integratedDetails}
           ${sku ? `<p class="cart-item__sku">SKU: ${sku}</p>` : ''}
           <p class="cart-item__price">$${price.toFixed(2)} CAD</p>
         </div>
@@ -284,10 +308,15 @@ function renderCartSummary() {
   const summaryEl = document.getElementById('cart-summary');
   if (!summaryEl) return;
 
+  const cart = getCart();
+  const hasIntegratedDelivery = cart.some(i => i._isIntegrated && i._integratedDelivery === 'delivery');
+  const integratedDeliveryFee = hasIntegratedDelivery ? 350 : 0;
+  const hasRegularItems = cart.some(i => !i._isIntegrated);
+
   const subtotal        = getCartTotal();
-  const fee             = getShippingFee(subtotal);
-  const total           = subtotal + fee;
-  const isFreeStandard  = cartFulfillment === 'delivery' && !cartExpress && subtotal >= FREE_SHIP_THRESHOLD;
+  const fee             = hasRegularItems ? getShippingFee(subtotal) : 0;
+  const total           = subtotal + fee + integratedDeliveryFee;
+  const isFreeStandard  = hasRegularItems && cartFulfillment === 'delivery' && !cartExpress && subtotal >= FREE_SHIP_THRESHOLD;
 
   const activeRates     = getActiveRates();
   const shippingDisplay = cartFulfillment === 'pickup'
@@ -296,59 +325,64 @@ function renderCartSummary() {
       ? '<span class="free-ship">Free</span>'
       : `$${fee.toFixed(2)} CAD`;
 
+  let fulfillmentHtml = '';
+  if (hasRegularItems) {
+    const pickupOrDelivery = cartFulfillment === 'pickup'
+      ? `<div class="pickup-section">
+          <label class="pickup-label">Phone number — we'll text you when it's ready</label>
+          <input type="tel" id="pickup-phone" class="pickup-phone" placeholder="e.g. 647-555-0123" value="${cartPhone}" oninput="cartPhone=this.value">
+        </div>`
+      : `<div class="delivery-section">
+          <select id="delivery-region" class="delivery-select" onchange="setRegion(this.value)">
+            <option value="gta"     ${cartRegion === 'gta'     ? 'selected' : ''}>GTA — Local Delivery</option>
+            <option value="ontario" ${cartRegion === 'ontario' ? 'selected' : ''}>Ontario, outside GTA</option>
+            <option value="canada"  ${cartRegion === 'canada'  ? 'selected' : ''}>Rest of Canada</option>
+          </select>
+          <div class="fulfillment-toggle" style="margin-top:8px;">
+            <label class="fulfillment-opt${!cartExpress ? ' fulfillment-opt--active' : ''}">
+              <input type="radio" name="speed" value="standard" ${!cartExpress ? 'checked' : ''} onchange="setExpress(false)">
+              <div class="fulfillment-opt__text">
+                <span class="fulfillment-opt__label">Standard</span>
+                <span class="fulfillment-opt__sub">4–10 business days &middot; ${isFreeStandard ? 'Free' : '$' + activeRates.standard}</span>
+              </div>
+            </label>
+            <label class="fulfillment-opt${cartExpress ? ' fulfillment-opt--active' : ''}">
+              <input type="radio" name="speed" value="express" ${cartExpress ? 'checked' : ''} onchange="setExpress(true)">
+              <div class="fulfillment-opt__text">
+                <span class="fulfillment-opt__label">Express</span>
+                <span class="fulfillment-opt__sub">2–3 business days &middot; $${activeRates.express} &middot; Full carrier rate</span>
+              </div>
+            </label>
+          </div>
+          ${isFreeStandard ? '<p class="ship-note ship-note--green">Free standard shipping applied!</p>' : (!cartExpress && subtotal < FREE_SHIP_THRESHOLD ? '<p class="ship-note">Add <strong>$' + (FREE_SHIP_THRESHOLD - subtotal).toFixed(2) + '</strong> more for free standard shipping</p>' : '')}
+        </div>`;
+
+    fulfillmentHtml = `
+      <div class="fulfillment-toggle">
+        <label class="fulfillment-opt${cartFulfillment === 'pickup' ? ' fulfillment-opt--active' : ''}">
+          <input type="radio" name="fulfillment" value="pickup" ${cartFulfillment === 'pickup' ? 'checked' : ''} onchange="setFulfillment('pickup')">
+          <div class="fulfillment-opt__text">
+            <span class="fulfillment-opt__label">Pickup</span>
+            <span class="fulfillment-opt__sub">Ready in 1–2 business days &middot; Free</span>
+          </div>
+        </label>
+        <label class="fulfillment-opt${cartFulfillment === 'delivery' ? ' fulfillment-opt--active' : ''}">
+          <input type="radio" name="fulfillment" value="delivery" ${cartFulfillment === 'delivery' ? 'checked' : ''} onchange="setFulfillment('delivery')">
+          <div class="fulfillment-opt__text">
+            <span class="fulfillment-opt__label">Delivery</span>
+            <span class="fulfillment-opt__sub">Canada-wide shipping</span>
+          </div>
+        </label>
+      </div>
+      ${pickupOrDelivery}
+      <div class="cart-summary__row"><span>Shipping</span><span>${shippingDisplay}</span></div>
+    `;
+  }
+
   summaryEl.innerHTML = `
     <div class="cart-summary__row"><span>Subtotal</span><span>$${subtotal.toFixed(2)} CAD</span></div>
-
-    <div class="fulfillment-toggle">
-      <label class="fulfillment-opt${cartFulfillment === 'pickup' ? ' fulfillment-opt--active' : ''}">
-        <input type="radio" name="fulfillment" value="pickup" ${cartFulfillment === 'pickup' ? 'checked' : ''} onchange="setFulfillment('pickup')">
-        <div class="fulfillment-opt__text">
-          <span class="fulfillment-opt__label">Pickup</span>
-          <span class="fulfillment-opt__sub">Ready in 1–2 business days &middot; Free</span>
-        </div>
-      </label>
-      <label class="fulfillment-opt${cartFulfillment === 'delivery' ? ' fulfillment-opt--active' : ''}">
-        <input type="radio" name="fulfillment" value="delivery" ${cartFulfillment === 'delivery' ? 'checked' : ''} onchange="setFulfillment('delivery')">
-        <div class="fulfillment-opt__text">
-          <span class="fulfillment-opt__label">Delivery</span>
-          <span class="fulfillment-opt__sub">Canada-wide shipping</span>
-        </div>
-      </label>
-    </div>
-
-    ${cartFulfillment === 'pickup' ? `
-      <div class="pickup-section">
-        <label class="pickup-label">Phone number — we'll text you when it's ready</label>
-        <input type="tel" id="pickup-phone" class="pickup-phone" placeholder="e.g. 647-555-0123" value="${cartPhone}" oninput="cartPhone=this.value">
-      </div>
-    ` : `
-      <div class="delivery-section">
-        <select id="delivery-region" class="delivery-select" onchange="setRegion(this.value)">
-          <option value="gta"     ${cartRegion === 'gta'     ? 'selected' : ''}>GTA — Local Delivery</option>
-          <option value="ontario" ${cartRegion === 'ontario' ? 'selected' : ''}>Ontario, outside GTA</option>
-          <option value="canada"  ${cartRegion === 'canada'  ? 'selected' : ''}>Rest of Canada</option>
-        </select>
-        <div class="fulfillment-toggle" style="margin-top:8px;">
-          <label class="fulfillment-opt${!cartExpress ? ' fulfillment-opt--active' : ''}">
-            <input type="radio" name="speed" value="standard" ${!cartExpress ? 'checked' : ''} onchange="setExpress(false)">
-            <div class="fulfillment-opt__text">
-              <span class="fulfillment-opt__label">Standard</span>
-              <span class="fulfillment-opt__sub">4–10 business days &middot; ${isFreeStandard ? 'Free' : '$' + activeRates.standard}</span>
-            </div>
-          </label>
-          <label class="fulfillment-opt${cartExpress ? ' fulfillment-opt--active' : ''}">
-            <input type="radio" name="speed" value="express" ${cartExpress ? 'checked' : ''} onchange="setExpress(true)">
-            <div class="fulfillment-opt__text">
-              <span class="fulfillment-opt__label">Express</span>
-              <span class="fulfillment-opt__sub">2–3 business days &middot; $${activeRates.express} &middot; Full carrier rate</span>
-            </div>
-          </label>
-        </div>
-        ${isFreeStandard ? `<p class="ship-note ship-note--green">Free standard shipping applied!</p>` : !cartExpress && subtotal < FREE_SHIP_THRESHOLD ? `<p class="ship-note">Add <strong>$${(FREE_SHIP_THRESHOLD - subtotal).toFixed(2)}</strong> more for free standard shipping</p>` : ''}
-      </div>
-    `}
-
-    <div class="cart-summary__row"><span>Shipping</span><span>${shippingDisplay}</span></div>
+    ${hasIntegratedDelivery ? '<div class="cart-summary__row"><span>Integrated Sink Delivery — GTA</span><span>$350.00 CAD</span></div>' : ''}
+    ${fulfillmentHtml}
     <div class="cart-summary__row cart-summary__total"><span>Total</span><span>$${total.toFixed(2)} CAD</span></div>
     <button class="btn btn--primary" id="checkoutBtn" style="width:100%;text-align:center;margin-top:20px;">Proceed to Checkout</button>
     <p id="checkout-error" style="color:#c0392b;font-size:0.82rem;margin-top:10px;display:none;text-align:center;"></p>
@@ -383,13 +417,19 @@ async function startCheckout() {
     const pid     = item.productId || item.id;
     const p       = typeof SINKLY_PRODUCTS !== 'undefined' ? SINKLY_PRODUCTS.find(x => x.id === pid) : null;
     const variant = p && p.variants ? p.variants[item.variantIdx ?? 0] : null;
-    return {
+    const base = {
       productId:    pid,
       variantIdx:   item.variantIdx ?? 0,
       variantColor: variant ? variant.color : null,
       variantSku:   variant ? variant.sku   : null,
       qty:          item.qty,
     };
+    if (item._isIntegrated) {
+      base.isIntegrated        = true;
+      base.integratedDelivery  = item._integratedDelivery;
+      base.integratedDescription = item._size + ' · ' + item._slab + ' · ' + item._bowlType;
+    }
+    return base;
   });
 
   try {

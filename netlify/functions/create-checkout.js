@@ -28,6 +28,15 @@ const PRODUCT_CATALOG = {
   'ks-d3240':       { name: 'Large Double Bowl Sink',           price: 21000, salePrice:  null  },
   'ks-d3260':       { name: 'Oversized Double Bowl Sink',       price: 21000, salePrice:  null  },
   'ks-workstation': { name: 'Workstation Kitchen Sink',         price: 41100, salePrice: 32900  },
+  // Integrated Stone Sinks
+  'is-24': { name: 'Integrated Stone Sink — 24"', price:  85000, salePrice: null },
+  'is-30': { name: 'Integrated Stone Sink — 30"', price:  96500, salePrice: null },
+  'is-36': { name: 'Integrated Stone Sink — 36"', price: 105500, salePrice: null },
+  'is-42': { name: 'Integrated Stone Sink — 42"', price: 114200, salePrice: null },
+  'is-48': { name: 'Integrated Stone Sink — 48"', price: 119000, salePrice: null },
+  'is-54': { name: 'Integrated Stone Sink — 54"', price: 123500, salePrice: null },
+  'is-60': { name: 'Integrated Stone Sink — 60"', price: 135000, salePrice: null },
+  'is-72': { name: 'Integrated Stone Sink — 72"', price: 149000, salePrice: null },
   // Kitchen Faucets
   'kf-40001': { name: 'Gooseneck Pull-Down Kitchen Faucet',    price:  8900, salePrice: null },
   'kf-40002': { name: 'Commercial Spring Kitchen Faucet',      price:  9900, salePrice: null },
@@ -130,12 +139,16 @@ exports.handler = async (event) => {
     const unitAmount     = pricing.salePrice ?? pricing.price;
     subtotalCents += unitAmount * item.qty;
 
+    const descriptionParts = [];
+    if (item.integratedDescription) descriptionParts.push(item.integratedDescription);
+    else if (item.variantColor) descriptionParts.push(item.variantColor);
+
     lineItems.push({
       price_data: {
         currency: 'cad',
         product_data: {
           name: product.name,
-          ...(item.variantColor ? { description: item.variantColor } : {}),
+          ...(descriptionParts.length ? { description: descriptionParts.join(' · ') } : {}),
         },
         unit_amount: unitAmount,
       },
@@ -147,10 +160,24 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'No valid products in cart' }) };
   }
 
-  // Add shipping line item (server-side validated)
+  // Integrated sink delivery — $350 flat GTA fee
+  const hasIntegratedDelivery = items.some(i => i.isIntegrated && i.integratedDelivery === 'delivery');
+  if (hasIntegratedDelivery) {
+    lineItems.push({
+      price_data: {
+        currency: 'cad',
+        product_data: { name: 'Integrated Sink Delivery — GTA' },
+        unit_amount: 35000,
+      },
+      quantity: 1,
+    });
+  }
+
+  // Add shipping line item for regular products (server-side validated)
   const safeRegion    = SINK_SHIPPING_RATES[region] ? region : 'canada';
-  const hasSink       = items.some(i => i.productId && (i.productId.startsWith('ks-') || i.productId.startsWith('bs-')));
-  const shippingCents = calcShippingCents(subtotalCents, fulfillment, safeRegion, express, hasSink);
+  const hasSink       = items.some(i => !i.isIntegrated && i.productId && (i.productId.startsWith('ks-') || i.productId.startsWith('bs-')));
+  const hasRegularItems = items.some(i => !i.isIntegrated);
+  const shippingCents = hasRegularItems ? calcShippingCents(subtotalCents, fulfillment, safeRegion, express, hasSink) : 0;
 
   if (shippingCents > 0) {
     const regionLabels = { gta: 'GTA — Local Delivery', ontario: 'Ontario', canada: 'Canada-wide' };
