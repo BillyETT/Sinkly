@@ -537,12 +537,29 @@ const SINKLY_PRODUCTS = [
   },
 
   // ── INTEGRATED STONE SINKS ─────────────────
-  { id: 'is-24', name: 'Integrated Stone Sink — 24"',  type: '24 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price:  850, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS24',  images: [], features: [] }] },
-  { id: 'is-30', name: 'Integrated Stone Sink — 30"',  type: '30 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price:  965, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS30',  images: [], features: [] }] },
-  { id: 'is-36', name: 'Integrated Stone Sink — 36"',  type: '36 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 1055, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS36',  images: [], features: [] }] },
-  { id: 'is-42', name: 'Integrated Stone Sink — 42"',  type: '42 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 1142, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS42',  images: [], features: [] }] },
-  { id: 'is-48', name: 'Integrated Stone Sink — 48"',  type: '48 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 1190, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS48',  images: [], features: [] }] },
-  { id: 'is-54', name: 'Integrated Stone Sink — 54"',  type: '54 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 1235, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS54',  images: [], features: [] }] },
-  { id: 'is-60', name: 'Integrated Stone Sink — 60"',  type: '60 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 1350, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS60',  images: [], features: [] }] },
-  { id: 'is-72', name: 'Integrated Stone Sink — 72"',  type: '72 Inch',  category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 1490, salePrice: null, variants: [{ color: '', hex: '#c9b99a', sku: 'IS72',  images: [], features: [] }] },
+  {
+    id: 'is-p1', name: 'Classic Rectangular Integrated Sink', type: 'Classic Rectangular',
+    category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 850, salePrice: null,
+    variants: [{ color: '', hex: '#c9b99a', sku: 'IS-P1', images: ['integrated sinks/p1.jpg'], features: [] }]
+  },
+  {
+    id: 'is-p2', name: 'Farmhouse Integrated Sink', type: 'Farmhouse',
+    category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 850, salePrice: null,
+    variants: [{ color: '', hex: '#c9b99a', sku: 'IS-P2', images: ['integrated sinks/p2.jpg'], features: [] }]
+  },
+  {
+    id: 'is-p3', name: 'Vessel Bowl Integrated Sink', type: 'Vessel Bowl',
+    category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 850, salePrice: null,
+    variants: [{ color: '', hex: '#c9b99a', sku: 'IS-P3', images: ['integrated sinks/p3.jpg'], features: [] }]
+  },
+  {
+    id: 'is-p4', name: 'Deep Basin Integrated Sink', type: 'Deep Basin',
+    category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 850, salePrice: null,
+    variants: [{ color: '', hex: '#c9b99a', sku: 'IS-P4', images: ['integrated sinks/p4.jpg'], features: [] }]
+  },
+  {
+    id: 'is-p5', name: 'Minimalist Flat Integrated Sink', type: 'Minimalist Flat',
+    category: 'Integrated Sinks', page: 'integrated-sinks.html', price: 850, salePrice: null,
+    variants: [{ color: '', hex: '#c9b99a', sku: 'IS-P5', images: ['integrated sinks/p5.jpg'], features: [] }]
+  },
 ];

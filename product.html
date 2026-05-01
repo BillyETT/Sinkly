@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product — Sinkly</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .is-size-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+    @media(max-width:480px){.is-size-grid{grid-template-columns:repeat(3,1fr)}}
+    .is-size-btn{border:1.5px solid #ddd;background:#fff;border-radius:8px;padding:10px 6px;cursor:pointer;text-align:center;transition:border-color .15s,background .15s;font-family:inherit}
+    .is-size-btn.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+    .is-size-btn .is-size-label{font-weight:600;font-size:.9rem;display:block}
+    .is-size-btn .is-size-price{font-size:.75rem;display:block;margin-top:2px;opacity:.8}
+    .is-opt-btn{border:1.5px solid #ddd;background:#fff;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:.875rem;font-weight:500;transition:border-color .15s,background .15s;font-family:inherit}
+    .is-opt-btn.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+    .is-opt-btn:disabled{opacity:.4;cursor:not-allowed}
+    .is-option-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .is-delivery-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .is-delivery-opt{flex:1;min-width:140px}
+    .is-delivery-opt input{display:none}
+    .is-delivery-opt label{display:block;border:1.5px solid #ddd;border-radius:8px;padding:10px 14px;cursor:pointer;transition:border-color .15s,background .15s}
+    .is-delivery-opt input:checked+label{border-color:var(--navy);background:rgba(14,30,55,.04)}
+    .is-delivery-opt__title{font-weight:600;font-size:.875rem;color:var(--navy)}
+    .is-delivery-opt__sub{font-size:.75rem;color:var(--taupe-dk);margin-top:2px}
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -308,7 +327,137 @@
       });
     }
 
-    buildPage();
+    // ── Integrated Sink PDP ──────────────────
+    function buildIntegratedPage() {
+      const IS_SIZES = [
+        { id: 'is-24', label: '24"', price: 850 },
+        { id: 'is-30', label: '30"', price: 965 },
+        { id: 'is-36', label: '36"', price: 1055 },
+        { id: 'is-42', label: '42"', price: 1142 },
+        { id: 'is-48', label: '48"', price: 1190 },
+        { id: 'is-54', label: '54"', price: 1235 },
+        { id: 'is-60', label: '60"', price: 1350 },
+        { id: 'is-72', label: '72"', price: 1490 },
+      ];
+
+      let selSizeIdx   = 0;
+      let selBowl      = 'single';
+      let selShape     = 'square';
+      let selDelivery  = 'delivery';
+
+      const imgs = (p.variants && p.variants[0] && p.variants[0].images) || [];
+
+      function renderIS() {
+        const sz = IS_SIZES[selSizeIdx];
+        const canDouble = parseInt(sz.label) >= 42;
+        if (!canDouble) selBowl = 'single';
+
+        container.innerHTML = `
+          <div class="pdp-breadcrumb">
+            <a href="index.html">Home</a><span>›</span>
+            <a href="integrated-sinks.html">Integrated Sinks</a><span>›</span>
+            <span>${p.name}</span>
+          </div>
+          <div class="pdp-layout">
+            <div class="pdp-gallery" id="pdpGalleryWrap">${galleryHTML(imgs)}</div>
+            <div class="pdp-info">
+              <p class="pdp-category">Integrated Sinks</p>
+              <h1 class="pdp-title">${p.name}</h1>
+
+              <div class="pdp-section">
+                <p class="pdp-section-label">Size</p>
+                <div class="is-size-grid">
+                  ${IS_SIZES.map((s, i) => `<button class="is-size-btn${i === selSizeIdx ? ' selected' : ''}" data-size-idx="${i}" type="button"><span class="is-size-label">${s.label}</span><span class="is-size-price">$${s.price}</span></button>`).join('')}
+                </div>
+              </div>
+
+              <div class="pdp-section">
+                <p class="pdp-section-label">Sink Style</p>
+                <div class="is-option-row">
+                  <button class="is-opt-btn${selShape === 'square' ? ' selected' : ''}" data-shape="square" type="button">Square</button>
+                  <button class="is-opt-btn${selShape === 'ramp' ? ' selected' : ''}" data-shape="ramp" type="button">Ramp</button>
+                </div>
+              </div>
+
+              <div class="pdp-section">
+                <p class="pdp-section-label">Bowl Configuration</p>
+                <div class="is-option-row">
+                  <button class="is-opt-btn${selBowl === 'single' ? ' selected' : ''}" data-bowl="single" type="button">Single Bowl</button>
+                  <button class="is-opt-btn${selBowl === 'double' ? ' selected' : ''}" data-bowl="double" type="button"${!canDouble ? ' disabled' : ''}>Double Bowl</button>
+                </div>
+                ${!canDouble ? '<p style="font-size:.75rem;color:var(--taupe-dk);margin-top:4px;">Double bowl available for 42&quot; and larger</p>' : ''}
+              </div>
+
+              <div class="pdp-section">
+                <p class="pdp-section-label">Fulfillment</p>
+                <div class="is-delivery-row">
+                  <div class="is-delivery-opt">
+                    <input type="radio" name="is-delivery" id="is-del-d" value="delivery" ${selDelivery === 'delivery' ? 'checked' : ''}>
+                    <label for="is-del-d"><div class="is-delivery-opt__title">GTA Delivery</div><div class="is-delivery-opt__sub">$350 flat fee</div></label>
+                  </div>
+                  <div class="is-delivery-opt">
+                    <input type="radio" name="is-delivery" id="is-del-p" value="pickup" ${selDelivery === 'pickup' ? 'checked' : ''}>
+                    <label for="is-del-p"><div class="is-delivery-opt__title">Pickup</div><div class="is-delivery-opt__sub">Free — ready in 3–5 business days</div></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pdp-price-row">
+                <span class="pdp-price">$${sz.price.toFixed(2)} <span class="pdp-cad">CAD</span></span>
+                ${selDelivery === 'delivery' ? '<span style="font-size:.82rem;color:var(--taupe-dk);margin-left:10px;">+ $350 delivery</span>' : ''}
+              </div>
+
+              <div class="pdp-actions">
+                <button class="btn btn--primary pdp-atc" id="pdpAddToCart" type="button">Add to Cart</button>
+                <a href="integrated-sinks.html" class="pdp-back-btn">&#8592; Back to Integrated Sinks</a>
+              </div>
+
+              <div class="pdp-meta">
+                <p>&#10003; Premium stone — made to order</p>
+                <p>&#10003; GTA delivery or free pickup</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      container.addEventListener('click', e => {
+        const thumb = e.target.closest('.pdp-thumb');
+        if (thumb) {
+          const src = thumb.dataset.src;
+          const mainImg = document.getElementById('pdpMainImg');
+          if (mainImg) mainImg.src = src;
+          container.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          return;
+        }
+        const sizeBtn = e.target.closest('.is-size-btn');
+        if (sizeBtn) { selSizeIdx = +sizeBtn.dataset.sizeIdx; renderIS(); return; }
+        const shapeBtn = e.target.closest('[data-shape]');
+        if (shapeBtn) { selShape = shapeBtn.dataset.shape; renderIS(); return; }
+        const bowlBtn = e.target.closest('[data-bowl]');
+        if (bowlBtn && !bowlBtn.disabled) { selBowl = bowlBtn.dataset.bowl; renderIS(); return; }
+        const atcBtn = e.target.closest('#pdpAddToCart');
+        if (atcBtn) {
+          const sz = IS_SIZES[selSizeIdx];
+          addIntegratedSinkToCart(
+            sz.id, sz.label, p.name,
+            selBowl === 'single' ? 'Single Bowl' : 'Double Bowl',
+            sz.price, selDelivery,
+            selShape === 'square' ? 'Square' : 'Ramp'
+          );
+          return;
+        }
+      });
+
+      container.addEventListener('change', e => {
+        if (e.target.name === 'is-delivery') { selDelivery = e.target.value; renderIS(); }
+      });
+
+      renderIS();
+    }
+
+    p.category === 'Integrated Sinks' ? buildIntegratedPage() : buildPage();
   })();
   </script>
 </body>

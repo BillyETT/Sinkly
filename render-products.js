@@ -13,10 +13,13 @@ function renderProductGrid(category) {
   }
 
   grid.innerHTML = products.map(p => {
-    // Support both variants (new) and colors (old)
+    const isIntegrated = p.category === 'Integrated Sinks';
+
+    // Only show swatches for named color variants
     const hasVariants = p.variants && p.variants.length > 0;
-    const swatches = hasVariants
-      ? p.variants.map((v, i) => `<span class="color-swatch${i === 0 ? ' active' : ''}" style="background:${v.hex};" title="${v.color}" data-color="${v.color}"></span>`).join('')
+    const namedVariants = hasVariants ? p.variants.filter(v => v.color) : [];
+    const swatches = namedVariants.length > 0
+      ? namedVariants.map((v, i) => `<span class="color-swatch${i === 0 ? ' active' : ''}" style="background:${v.hex};" title="${v.color}" data-color="${v.color}"></span>`).join('')
       : (p.colors || []).map((c, i) => `<span class="color-swatch${i === 0 ? ' active' : ''}" style="background:${c.hex};" title="${c.name}" data-color="${c.name}"></span>`).join('');
 
     // Use plain image (index 1) for card; fall back to index 0 if only one image
@@ -26,9 +29,15 @@ function renderProductGrid(category) {
       ? `<img src="${firstImg}" alt="${p.name}" style="width:100%;height:100%;object-fit:contain;padding:16px;box-sizing:border-box;" />`
       : '';
 
-    const priceHTML = p.salePrice
-      ? `<span class="price" style="color:var(--navy);">$${p.salePrice.toFixed(2)}</span><span class="price-original" style="margin-left:6px;">$${p.price.toFixed(2)}</span>`
-      : `<span class="price" style="color:var(--navy);">$${p.price.toFixed(2)}</span>`;
+    const priceHTML = isIntegrated
+      ? `<span class="price" style="color:var(--navy);">From $${p.price.toFixed(2)}</span>`
+      : p.salePrice
+        ? `<span class="price" style="color:var(--navy);">$${p.salePrice.toFixed(2)}</span><span class="price-original" style="margin-left:6px;">$${p.price.toFixed(2)}</span>`
+        : `<span class="price" style="color:var(--navy);">$${p.price.toFixed(2)}</span>`;
+
+    const cardBtn = isIntegrated
+      ? `<a href="product.html?id=${p.id}" class="btn btn--small" style="text-decoration:none;">View Options</a>`
+      : `<button class="btn btn--small">Add to Cart</button>`;
 
     return `
       <div class="product-card product-card--light" data-product-id="${p.id}" data-variant-idx="0">
@@ -46,7 +55,7 @@ function renderProductGrid(category) {
           ${swatches ? `<div class="color-swatches">${swatches}</div>` : ''}
           <div class="product-card__footer">
             <div>${priceHTML}</div>
-            <button class="btn btn--small">Add to Cart</button>
+            ${cardBtn}
           </div>
         </div>
       </div>

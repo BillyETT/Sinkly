@@ -1,460 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" href="logo.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custom Integrated Stone Sinks GTA — Sinkly</title>
-  <meta name="description" content="Fully custom integrated sinks built from marble, quartz, granite, and porcelain. Sinkly designs, fabricates, and installs custom stone sinks across the Greater Toronto Area. Request a free quote today." />
-  <meta name="keywords" content="custom sink GTA, custom integrated sink Toronto, marble sink Toronto, quartz sink GTA, granite sink Toronto, custom stone sink, vanity sink custom, kitchen sink custom Canada" />
-  <meta property="og:title" content="Custom Integrated Stone Sinks — Sinkly" />
-  <meta property="og:description" content="Your countertop, your sink, one seamless piece. Custom stone sinks fabricated and installed across the GTA." />
+  <title>Create your Own — Sinkly</title>
+  <meta name="description" content="Create your own custom integrated stone sink. Choose your stone, size, bowl configuration, and get it delivered to GTA or pick up for free." />
+  <meta name="keywords" content="integrated stone sink configurator, custom integrated sink GTA, Calacatta sink, marble integrated sink Toronto" />
+  <meta property="og:title" content="Create your Own — Sinkly" />
+  <meta property="og:description" content="Configure your integrated stone sink. 6 stones, 8 sizes, single or double bowl. GTA delivery or free pickup." />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ── Custom Sinks Page ── */
-    .custom-hero {
-      position: relative;
-      height: 540px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .custom-hero__bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d2a27 100%);
-    }
-    .custom-hero__img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.45;
-    }
-    .custom-hero__content {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      padding: 0 24px;
-    }
-    .custom-hero__eyebrow {
-      font-family: 'Jost', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #c9a84c;
-      margin-bottom: 16px;
-    }
-    .custom-hero__heading {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 18px;
-      letter-spacing: -0.01em;
-    }
-    .custom-hero__sub {
-      font-size: 1.05rem;
-      opacity: 0.85;
-      max-width: 540px;
-      margin: 0 auto 30px;
-      line-height: 1.65;
-    }
+    .is-hero { position: relative; height: 480px; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .is-hero__bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a1a1a 0%, #2d2a27 100%); }
+    .is-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+    .is-hero__content { position: relative; z-index: 2; color: #fff; padding: 0 24px; }
+    .is-hero__eyebrow { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #c9a84c; margin-bottom: 16px; }
+    .is-hero__heading { font-family: 'Jost', sans-serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 300; line-height: 1.15; margin-bottom: 16px; }
+    .is-hero__sub { font-size: 1rem; opacity: 0.85; max-width: 520px; margin: 0 auto 28px; line-height: 1.65; }
 
-    /* ── Feature Strip ── */
-    .custom-features {
-      background: var(--navy);
-      color: #fff;
-      padding: 32px 0;
-    }
-    .custom-features__inner {
-      display: flex;
-      justify-content: center;
-      gap: 56px;
-      flex-wrap: wrap;
-    }
-    .custom-feature {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.9rem;
-      font-family: 'Jost', sans-serif;
-      letter-spacing: 0.04em;
-    }
-    .custom-feature svg { color: #c9a84c; flex-shrink: 0; }
+    .is-config { background: var(--bg); padding: 72px 0 80px; }
+    .is-config__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 
-    /* ── Gallery Section ── */
-    .custom-gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
-      height: 440px;
-    }
-    .custom-gallery__item {
-      overflow: hidden;
-      position: relative;
-    }
-    .custom-gallery__item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .custom-gallery__item:hover img { transform: scale(1.04); }
-    .custom-gallery__item:first-child { border-radius: 0; }
-    .custom-gallery__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%);
-    }
-    .custom-gallery__label {
-      position: absolute;
-      bottom: 20px; left: 24px;
-      color: #fff;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
+    .is-preview { position: sticky; top: 100px; }
+    .is-preview__stone { width: 100%; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; position: relative; background: linear-gradient(135deg, #f5ede0 0%, #ede3d5 50%, #f8f2e9 100%); box-shadow: 0 8px 40px rgba(0,0,0,0.12); transition: background 0.4s ease; }
+    .is-preview__stone img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .is-preview__stone img.loaded { display: block; }
+    .is-preview__stone-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.3) 100%); }
+    .is-preview__label { position: absolute; bottom: 20px; left: 24px; right: 24px; color: #fff; font-family: 'Jost', sans-serif; }
+    .is-preview__label-stone { font-size: 1.1rem; font-weight: 500; letter-spacing: 0.02em; }
+    .is-preview__label-sub { font-size: 0.78rem; opacity: 0.8; letter-spacing: 0.06em; margin-top: 4px; }
+    .is-preview__summary { margin-top: 20px; background: #fff; border: 1px solid var(--taupe); border-radius: 12px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; }
+    .is-summary-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; }
+    .is-summary-row__label { color: var(--taupe-dk); font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .is-summary-row__value { font-weight: 600; color: var(--navy); font-family: 'Jost', sans-serif; }
+    .is-summary-row__value--empty { color: #bbb; font-weight: 400; }
 
-    /* ── Intro Section ── */
-    .custom-intro {
-      background: var(--bg);
-      padding: 80px 0;
-    }
-    .custom-intro__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .custom-intro__text .section-label { margin-bottom: 12px; }
-    .custom-intro__text h2 {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 300;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-    .custom-intro__text p {
-      color: var(--taupe-dk);
-      line-height: 1.75;
-      margin-bottom: 16px;
-      font-size: 0.97rem;
-    }
-    .custom-process {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 8px;
-    }
-    .custom-process__step {
-      background: #fff;
-      border: 1px solid var(--taupe);
-      border-radius: 10px;
-      padding: 20px;
-    }
-    .custom-process__num {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: #c9a84c;
-      margin-bottom: 8px;
-    }
-    .custom-process__step h5 {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
-    .custom-process__step p {
-      font-size: 0.8rem;
-      color: var(--taupe-dk);
-      margin: 0;
-      line-height: 1.5;
-    }
+    .is-panel { display: flex; flex-direction: column; gap: 36px; }
+    .is-step__title { font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #c9a84c; margin-bottom: 16px; }
 
-    /* ── Quote Form ── */
-    .custom-form-section {
-      background: #fff;
-      padding: 80px 0;
-    }
-    .custom-form-section .section-header { margin-bottom: 48px; }
-    .custom-form {
-      max-width: 800px;
-      margin: 0 auto;
-      display: grid;
-      gap: 32px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .form-group label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      border: 1px solid var(--taupe);
-      border-radius: 8px;
-      padding: 14px 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.93rem;
-      color: var(--navy);
-      background: var(--bg);
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--navy);
-    }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .form-grid-3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-    }
+    .is-slab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .is-slab { position: relative; cursor: pointer; }
+    .is-slab input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .is-slab__card { border: 2px solid var(--taupe); border-radius: 12px; overflow: hidden; transition: all 0.18s; background: #fff; }
+    .is-slab input:checked + .is-slab__card { border-color: var(--navy); box-shadow: 0 0 0 2px var(--navy); }
+    .is-slab__card:hover { border-color: #9a8a7a; }
+    .is-slab__texture { width: 100%; aspect-ratio: 4/3; display: block; }
+    .is-slab__img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .is-slab__img.loaded { display: block; }
+    .is-slab__info { padding: 10px 12px 11px; }
+    .is-slab__name { font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+    .is-slab__desc { font-size: 0.7rem; color: var(--taupe-dk); line-height: 1.3; }
 
-    /* Radio & Checkbox Groups */
-    .form-radio-group,
-    .form-check-group {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .radio-option,
-    .check-option {
-      position: relative;
-    }
-    .radio-option input,
-    .check-option input {
-      position: absolute;
-      opacity: 0;
-      width: 0; height: 0;
-    }
-    .radio-option label,
-    .check-option label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border: 1.5px solid var(--taupe);
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--navy);
-      transition: all 0.18s;
-      background: var(--bg);
-      text-transform: none;
-      letter-spacing: 0;
-    }
-    .radio-option input:checked + label,
-    .check-option input:checked + label {
-      border-color: var(--navy);
-      background: var(--navy);
-      color: #fff;
-    }
-    .radio-option label:hover,
-    .check-option label:hover {
-      border-color: var(--navy);
-    }
+    .is-size-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .is-size { position: relative; }
+    .is-size input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .is-size__btn { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 8px; border: 1.5px solid var(--taupe); border-radius: 10px; cursor: pointer; transition: all 0.18s; background: #fff; text-align: center; }
+    .is-size__btn:hover { border-color: var(--navy); }
+    .is-size input:checked + .is-size__btn { border-color: var(--navy); background: var(--navy); color: #fff; }
+    .is-size__in { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 600; color: inherit; }
+    .is-size__price { font-size: 0.7rem; color: inherit; opacity: 0.7; }
 
-    /* Material swatches */
-    .material-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    .material-card input {
-      position: absolute; opacity: 0; width: 0; height: 0;
-    }
-    .material-card { position: relative; }
-    .material-card label {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding: 16px 12px 12px;
-      border: 1.5px solid var(--taupe);
-      border-radius: 10px;
-      cursor: pointer;
-      background: var(--bg);
-      transition: all 0.18s;
-      text-align: center;
-    }
-    .material-card input:checked + label {
-      border-color: var(--navy);
-      background: #f4f1ee;
-    }
-    .material-card label:hover { border-color: var(--navy); }
-    .material-swatch {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.08);
-    }
-    .material-card .mat-name {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: 0;
-      text-transform: none;
-    }
-    .material-card .mat-desc {
-      font-size: 0.72rem;
-      color: var(--taupe-dk);
-      line-height: 1.3;
-      font-weight: 400;
-      text-transform: none;
-      letter-spacing: 0;
-    }
+    .is-bowl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .is-bowl { position: relative; }
+    .is-bowl input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .is-bowl__btn { display: flex; align-items: center; gap: 10px; padding: 16px 18px; border: 1.5px solid var(--taupe); border-radius: 10px; cursor: pointer; transition: all 0.18s; background: #fff; }
+    .is-bowl__btn:hover { border-color: var(--navy); }
+    .is-bowl input:checked + .is-bowl__btn { border-color: var(--navy); background: #f4f1ee; }
+    .is-bowl__label { font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+    .is-bowl__sub { font-size: 0.73rem; color: var(--taupe-dk); }
 
-    /* File upload */
-    .file-upload-area {
-      border: 2px dashed var(--taupe);
-      border-radius: 10px;
-      padding: 28px 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s;
-      background: var(--bg);
-    }
-    .file-upload-area:hover { border-color: var(--navy); }
-    .file-upload-area input[type="file"] {
-      position: absolute; opacity: 0; width: 0; height: 0;
-    }
-    .file-upload-area svg { color: var(--taupe-dk); margin-bottom: 10px; }
-    .file-upload-area p {
-      font-size: 0.85rem;
-      color: var(--taupe-dk);
-      margin: 0;
-      line-height: 1.5;
-    }
-    .file-upload-area strong { color: var(--navy); }
-    .file-upload-area .file-name {
-      margin-top: 8px;
-      font-size: 0.8rem;
-      color: #c9a84c;
-      font-style: italic;
-    }
-    .upload-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .is-fulfillment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .is-fulfil { position: relative; }
+    .is-fulfil input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .is-fulfil__btn { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border: 1.5px solid var(--taupe); border-radius: 10px; cursor: pointer; transition: all 0.18s; background: #fff; }
+    .is-fulfil__btn:hover { border-color: var(--navy); }
+    .is-fulfil input:checked + .is-fulfil__btn { border-color: var(--navy); background: #f4f1ee; }
+    .is-fulfil__label { font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+    .is-fulfil__sub { font-size: 0.73rem; color: var(--taupe-dk); }
+    .is-fulfil__price { font-size: 0.82rem; font-weight: 600; color: #2e7d32; }
 
-    /* Measurements */
-    .measurement-note {
-      font-size: 0.8rem;
-      color: var(--taupe-dk);
-      margin-top: 4px;
-      font-style: italic;
-    }
-    .unit-input {
-      position: relative;
-    }
-    .unit-input input { padding-right: 48px; }
-    .unit-label {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.8rem;
-      color: var(--taupe-dk);
-      font-family: 'Jost', sans-serif;
-      pointer-events: none;
-    }
+    .is-cta { background: #fff; border: 1px solid var(--taupe); border-radius: 14px; padding: 24px 24px 20px; }
+    .is-cta__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .is-cta__price { font-family: 'Jost', sans-serif; font-size: 2rem; font-weight: 400; color: var(--navy); }
+    .is-cta__price-sub { font-size: 0.78rem; color: var(--taupe-dk); margin-top: 2px; }
+    .is-cta__btn { width: 100%; text-align: center; }
+    .is-cta__note { font-size: 0.75rem; color: var(--taupe-dk); text-align: center; margin-top: 12px; line-height: 1.5; }
+    #isAddToCart:disabled { opacity: 0.45; cursor: not-allowed; }
 
-    /* Divider */
-    .form-divider {
-      border: none;
-      border-top: 1px solid var(--taupe);
-      margin: 0;
-    }
-    .form-section-title {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #c9a84c;
-      margin-bottom: 20px;
-    }
+    .is-features { background: var(--navy); color: #fff; padding: 28px 0; }
+    .is-features__inner { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .is-feature { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; font-family: 'Jost', sans-serif; letter-spacing: 0.04em; }
+    .is-feature svg { color: #c9a84c; flex-shrink: 0; }
 
-    /* Submit */
-    .form-submit-wrap { text-align: center; }
-    .form-submit-wrap .btn {
-      padding: 16px 48px;
-      font-size: 0.9rem;
-      letter-spacing: 0.12em;
-    }
-    .form-disclaimer {
-      margin-top: 16px;
-      font-size: 0.78rem;
-      color: var(--taupe-dk);
-      line-height: 1.6;
-    }
-
-    /* Success Banner */
-    .form-success {
-      display: none;
-      background: #f0f7f0;
-      border: 1px solid #b2d8b2;
-      border-radius: 12px;
-      padding: 32px;
-      text-align: center;
-      margin-top: 32px;
-    }
-    .form-success svg { color: #4a9c4a; margin-bottom: 12px; }
-    .form-success h4 {
-      font-family: 'Jost', sans-serif;
-      font-size: 1.1rem;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .form-success p { font-size: 0.9rem; color: var(--taupe-dk); margin: 0; }
-
-    @media (max-width: 768px) {
-      .custom-gallery { grid-template-columns: 1fr; height: auto; }
-      .custom-gallery__item { height: 260px; }
-      .custom-intro__inner { grid-template-columns: 1fr; gap: 32px; }
-      .custom-process { grid-template-columns: 1fr; }
-      .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
-      .material-grid { grid-template-columns: 1fr 1fr; }
-      .upload-grid { grid-template-columns: 1fr; }
-      .custom-features__inner { gap: 24px; }
-    }
+    @media (max-width: 900px) { .is-config__layout { grid-template-columns: 1fr; gap: 32px; } .is-preview { position: static; } }
+    @media (max-width: 600px) { .is-slab-grid { grid-template-columns: repeat(2, 1fr); } .is-size-grid { grid-template-columns: repeat(4, 1fr); } .is-bowl-grid, .is-fulfillment-grid { grid-template-columns: 1fr 1fr; } .is-hero { height: 380px; } .is-features__inner { gap: 20px; } }
   </style>
 </head>
 <body>
 
   <div class="announcement-bar">
-    <p>Free shipping on orders over $300 · Canada-wide delivery</p>
+    <p>Free shipping on orders over $500 · Canada-wide delivery · GTA integrated sink delivery $350</p>
   </div>
 
   <header class="header" id="header">
@@ -503,344 +153,113 @@
 
   <main>
 
-    <!-- Hero -->
-    <section class="custom-hero">
-      <div class="custom-hero__bg"></div>
-      <img class="custom-hero__img" src="custom sinks/custom-1.png" alt="Custom Stone Sink" />
-      <div class="custom-hero__content">
-        <p class="custom-hero__eyebrow">Sinkly Custom</p>
-        <h1 class="custom-hero__heading">Custom Integrated Sinks<br>Built Around Your Space.</h1>
-        <p class="custom-hero__sub">Marble, quartz, granite, porcelain — we fabricate integrated sinks cut to your exact countertop and deliver throughout the Greater Toronto Area.</p>
-        <a href="#quote-form" class="btn btn--primary">Request a Quote</a>
+    <section class="is-hero">
+      <div class="is-hero__bg"></div>
+      <img class="is-hero__img" src="custom sinks/custom-1.png" alt="Create your Own Integrated Stone Sink" />
+      <div class="is-hero__content">
+        <p class="is-hero__eyebrow">Sinkly Custom</p>
+        <h1 class="is-hero__heading">Create your Own<br>Integrated Sink.</h1>
+        <p class="is-hero__sub">Pick your stone, choose your size, and configure your bowl. Delivered to GTA or free pickup from our warehouse.</p>
+        <a href="#configurator" class="btn btn--primary" onclick="document.getElementById('configurator').scrollIntoView({behavior:'smooth'});return false;">Start Configuring</a>
       </div>
     </section>
 
-    <!-- Feature Strip -->
-    <section class="custom-features">
+    <section class="is-features">
       <div class="container">
-        <div class="custom-features__inner">
-          <div class="custom-feature">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Premium Stone Materials
-          </div>
-          <div class="custom-feature">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Built to Your Measurements
-          </div>
-          <div class="custom-feature">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            GTA Delivery &amp; Installation
-          </div>
-          <div class="custom-feature">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Dedicated Representative
-          </div>
+        <div class="is-features__inner">
+          <div class="is-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>6 Premium Stone Finishes</div>
+          <div class="is-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>8 Sizes — 24&Prime; to 72&Prime;</div>
+          <div class="is-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>GTA Delivery — $350 Flat</div>
+          <div class="is-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Free Pickup Available</div>
         </div>
       </div>
     </section>
 
-    <!-- Gallery -->
-    <section class="custom-gallery">
-      <div class="custom-gallery__item">
-        <img src="custom sinks/custom-1.png" alt="Custom Kitchen Stone Sink" />
-        <div class="custom-gallery__overlay"></div>
-        <span class="custom-gallery__label">Kitchen Integration</span>
-      </div>
-      <div class="custom-gallery__item">
-        <img src="custom sinks/custom-2.png" alt="Custom Vanity Stone Sink" />
-        <div class="custom-gallery__overlay"></div>
-        <span class="custom-gallery__label">Vanity Integrated</span>
-      </div>
-      <div class="custom-gallery__item">
-        <img src="custom sinks/custom-3.png" alt="Custom Stone Sink" />
-        <div class="custom-gallery__overlay"></div>
-        <span class="custom-gallery__label">Stone Seamless</span>
-      </div>
-    </section>
-
-    <!-- Intro -->
-    <section class="custom-intro section">
+    <section class="is-config section" id="configurator">
       <div class="container">
-        <div class="custom-intro__inner">
-          <div class="custom-intro__text">
-            <p class="section-label">What We Offer</p>
-            <h2>One continuous surface. No seams, no shortcuts.</h2>
-            <p>Every custom sink starts with a real conversation. We work from your measurements and material of choice — marble, quartz, granite, or porcelain — to fabricate a sink that flows seamlessly into your countertop. No caulk lines, no drop-ins, just a clean, continuous surface that looks like it was always meant to be there.</p>
-            <p>Whether it's a floating vanity or a kitchen island, our team handles the full process: design review, cutting, finishing, delivery, and installation anywhere in the GTA.</p>
-          </div>
-          <div class="custom-process">
-            <div class="custom-process__step">
-              <p class="custom-process__num">STEP 01</p>
-              <h5>Submit Your Request</h5>
-              <p>Fill out our quote form with your sink type, material, and measurements.</p>
-            </div>
-            <div class="custom-process__step">
-              <p class="custom-process__num">STEP 02</p>
-              <h5>Consultation Call</h5>
-              <p>A Sinkly representative contacts you within 48 hours to go over details.</p>
-            </div>
-            <div class="custom-process__step">
-              <p class="custom-process__num">STEP 03</p>
-              <h5>Fabrication</h5>
-              <p>We source the slab and hand-fabricate your integrated sink to your exact specs.</p>
-            </div>
-            <div class="custom-process__step">
-              <p class="custom-process__num">STEP 04</p>
-              <h5>Delivery &amp; Install</h5>
-              <p>We deliver and install your custom piece anywhere in the Greater Toronto Area.</p>
-            </div>
-          </div>
+        <div class="section-header" style="margin-bottom:48px;">
+          <p class="section-label">Configure</p>
+          <h2>Build Your Integrated Sink</h2>
         </div>
-      </div>
-    </section>
+        <div class="is-config__layout">
 
-    <!-- Quote Form -->
-    <section class="custom-form-section" id="quote-form">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-label">Custom Quote</p>
-          <h2>Tell Us About Your Project</h2>
-          <p style="color:var(--taupe-dk);max-width:520px;margin:0 auto;font-size:0.95rem;line-height:1.7;">Share the details of your project and we'll get back to you within 24–48 hours with pricing and next steps.</p>
-        </div>
-
-        <!-- NOTE: Replace YOUR_EMAIL@example.com with your actual email address -->
-        <form class="custom-form" id="customQuoteForm"
-              action="https://formsubmit.co/YOUR_EMAIL@example.com"
-              method="POST"
-              enctype="multipart/form-data">
-
-          <!-- Hidden FormSubmit config -->
-          <input type="hidden" name="_subject" value="New Custom Sink Quote — Sinkly" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-
-          <!-- ── Sink Type ── -->
-          <div>
-            <p class="form-section-title">Sink Type</p>
-            <div class="form-group">
-              <label>What type of sink are you looking for?</label>
-              <div class="form-radio-group">
-                <div class="radio-option">
-                  <input type="radio" name="sink_type" id="type-kitchen" value="Kitchen Sink" required />
-                  <label for="type-kitchen">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-                    Kitchen Sink
-                  </label>
-                </div>
-                <div class="radio-option">
-                  <input type="radio" name="sink_type" id="type-vanity" value="Vanity Sink" />
-                  <label for="type-vanity">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                    Vanity Sink
-                  </label>
-                </div>
+          <div class="is-preview">
+            <div class="is-preview__stone" id="stonePreview">
+              <img id="stonePreviewImg" src="" alt="Selected stone" />
+              <div class="is-preview__stone-overlay"></div>
+              <div class="is-preview__label">
+                <div class="is-preview__label-stone" id="previewStoneName">Select a stone to preview</div>
+                <div class="is-preview__label-sub" id="previewStoneDesc"></div>
               </div>
+            </div>
+            <div class="is-preview__summary">
+              <div class="is-summary-row"><span class="is-summary-row__label">Stone</span><span class="is-summary-row__value" id="summaryStone"><span class="is-summary-row__value--empty">—</span></span></div>
+              <div class="is-summary-row"><span class="is-summary-row__label">Size</span><span class="is-summary-row__value" id="summarySize"><span class="is-summary-row__value--empty">—</span></span></div>
+              <div class="is-summary-row" id="summaryBowlRow"><span class="is-summary-row__label">Bowl</span><span class="is-summary-row__value" id="summaryBowl"><span class="is-summary-row__value--empty">—</span></span></div>
+              <div class="is-summary-row"><span class="is-summary-row__label">Fulfillment</span><span class="is-summary-row__value" id="summaryFulfil">GTA Delivery — $350</span></div>
             </div>
           </div>
 
-          <hr class="form-divider" />
+          <div class="is-panel">
 
-          <!-- ── Material ── -->
-          <div>
-            <p class="form-section-title">Material</p>
-            <div class="form-group">
-              <label>Select your preferred stone material</label>
-              <div class="material-grid">
-                <div class="material-card">
-                  <input type="radio" name="material" id="mat-marble" value="Marble" required />
-                  <label for="mat-marble">
-                    <div class="material-swatch" style="background: linear-gradient(135deg, #f5f0eb 0%, #e8e0d5 40%, #d4c9bc 100%);"></div>
-                    <span class="mat-name">Marble</span>
-                    <span class="mat-desc">Classic veining, timeless elegance</span>
-                  </label>
-                </div>
-                <div class="material-card">
-                  <input type="radio" name="material" id="mat-quartz" value="Quartz" />
-                  <label for="mat-quartz">
-                    <div class="material-swatch" style="background: linear-gradient(135deg, #f0ede9 0%, #e5e0da 50%, #ccc7c0 100%);"></div>
-                    <span class="mat-name">Quartz</span>
-                    <span class="mat-desc">Durable, low-maintenance, consistent</span>
-                  </label>
-                </div>
-                <div class="material-card">
-                  <input type="radio" name="material" id="mat-granite" value="Granite" />
-                  <label for="mat-granite">
-                    <div class="material-swatch" style="background: linear-gradient(135deg, #8c8078 0%, #6e6358 50%, #504940 100%);"></div>
-                    <span class="mat-name">Granite</span>
-                    <span class="mat-desc">Bold texture, heat resistant</span>
-                  </label>
-                </div>
-                <div class="material-card">
-                  <input type="radio" name="material" id="mat-porcelain" value="Porcelain" />
-                  <label for="mat-porcelain">
-                    <div class="material-swatch" style="background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #e8e8e8 100%); border: 1px solid #e0e0e0;"></div>
-                    <span class="mat-name">Porcelain</span>
-                    <span class="mat-desc">Crisp white, ultra-smooth finish</span>
-                  </label>
-                </div>
-              </div>
+            <div class="is-step">
+              <p class="is-step__title">Step 1 — Choose Your Stone</p>
+              <div class="is-slab-grid" id="slabGrid"></div>
             </div>
-          </div>
 
-          <hr class="form-divider" />
-
-          <!-- ── Measurements ── -->
-          <div>
-            <p class="form-section-title">Measurements</p>
-            <div class="form-group">
-              <label>Countertop / Sink Dimensions</label>
-              <div class="form-grid-3">
-                <div class="form-group">
-                  <label for="meas-width">Width</label>
-                  <div class="unit-input">
-                    <input type="number" id="meas-width" name="width_inches" placeholder="e.g. 36" min="1" />
-                    <span class="unit-label">in</span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="meas-depth">Depth</label>
-                  <div class="unit-input">
-                    <input type="number" id="meas-depth" name="depth_inches" placeholder="e.g. 22" min="1" />
-                    <span class="unit-label">in</span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="meas-height">Sink Height</label>
-                  <div class="unit-input">
-                    <input type="number" id="meas-height" name="height_inches" placeholder="e.g. 8" min="1" />
-                    <span class="unit-label">in</span>
-                  </div>
-                </div>
-              </div>
-              <p class="measurement-note">Approximate measurements are fine — your representative will confirm exact specs during the consultation.</p>
+            <div class="is-step">
+              <p class="is-step__title">Step 2 — Choose Size</p>
+              <div class="is-size-grid" id="sizeGrid"></div>
             </div>
-          </div>
 
-          <hr class="form-divider" />
-
-          <!-- ── Location ── -->
-          <div>
-            <p class="form-section-title">Delivery / Pickup</p>
-            <div class="form-group">
-              <label>Fulfilment Method</label>
-              <div style="display:flex;gap:24px;margin-bottom:16px;">
-                <label style="display:flex;align-items:center;gap:8px;font-weight:500;cursor:pointer;">
-                  <input type="radio" name="fulfilment" value="Delivery" checked onchange="document.getElementById('city-group').style.display='block'" />
-                  Delivery (GTA)
+            <div class="is-step" id="bowlStep" style="display:none;">
+              <p class="is-step__title">Step 3 — Bowl Configuration</p>
+              <div class="is-bowl-grid">
+                <label class="is-bowl">
+                  <input type="radio" name="is_bowl" value="single" checked onchange="selectBowl('Single Bowl')">
+                  <div class="is-bowl__btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+                    <div><div class="is-bowl__label">Single Bowl</div><div class="is-bowl__sub">One seamless basin</div></div>
+                  </div>
                 </label>
-                <label style="display:flex;align-items:center;gap:8px;font-weight:500;cursor:pointer;">
-                  <input type="radio" name="fulfilment" value="Pick-up" onchange="document.getElementById('city-group').style.display='none'" />
-                  Pick-up
+                <label class="is-bowl">
+                  <input type="radio" name="is_bowl" value="double" onchange="selectBowl('Double Bowl')">
+                  <div class="is-bowl__btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="8" width="9" height="10" rx="2"/><rect x="13" y="8" width="9" height="10" rx="2"/></svg>
+                    <div><div class="is-bowl__label">Double Bowl</div><div class="is-bowl__sub">Two integrated basins</div></div>
+                  </div>
                 </label>
               </div>
             </div>
-            <div class="form-group" id="city-group">
-              <label for="city">City / Area (GTA)</label>
-              <select id="city" name="city">
-                <option value="" disabled selected>Select your city</option>
-                <option>Toronto</option>
-                <option>Mississauga</option>
-                <option>Brampton</option>
-                <option>Vaughan</option>
-                <option>Richmond Hill</option>
-                <option>Markham</option>
-                <option>Scarborough</option>
-                <option>Etobicoke</option>
-                <option>North York</option>
-                <option>Pickering</option>
-                <option>Ajax</option>
-                <option>Whitby</option>
-                <option>Oshawa</option>
-                <option>Oakville</option>
-                <option>Burlington</option>
-                <option>Milton</option>
-                <option>Hamilton</option>
-                <option>Other (GTA)</option>
-              </select>
+
+            <div class="is-step">
+              <p class="is-step__title" id="fulfillStepTitle">Step 3 — Fulfillment</p>
+              <div class="is-fulfillment-grid">
+                <label class="is-fulfil">
+                  <input type="radio" name="is_fulfil" value="delivery" checked onchange="selectFulfil('delivery')">
+                  <div class="is-fulfil__btn"><div class="is-fulfil__label">GTA Delivery</div><div class="is-fulfil__sub">We bring it to you</div><div class="is-fulfil__price">$350 flat</div></div>
+                </label>
+                <label class="is-fulfil">
+                  <input type="radio" name="is_fulfil" value="pickup" onchange="selectFulfil('pickup')">
+                  <div class="is-fulfil__btn"><div class="is-fulfil__label">Pickup</div><div class="is-fulfil__sub">Collect from our warehouse</div><div class="is-fulfil__price" style="color:#2e7d32;">Free</div></div>
+                </label>
+              </div>
             </div>
-          </div>
 
-          <hr class="form-divider" />
-
-          <!-- ── Inspiration Photos ── -->
-          <div>
-            <p class="form-section-title">Inspiration Photos (Optional)</p>
-            <div class="form-group">
-              <label>Upload up to 2 photos of your inspiration or existing space</label>
-              <div class="upload-grid">
+            <div class="is-cta">
+              <div class="is-cta__top">
                 <div>
-                  <label for="photo1" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:0.82rem;color:var(--taupe-dk);margin-bottom:6px;display:block;">Photo 1</label>
-                  <div class="file-upload-area" onclick="document.getElementById('photo1').click()">
-                    <input type="file" id="photo1" name="inspiration_photo_1" accept="image/*" onchange="showFileName(this,'file1name')" />
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                    <p><strong>Click to upload</strong><br>JPG, PNG, HEIC — max 10MB</p>
-                    <p class="file-name" id="file1name"></p>
-                  </div>
+                  <div class="is-cta__price" id="ctaPrice">—</div>
+                  <div class="is-cta__price-sub" id="ctaPriceSub">Select a size to see price</div>
                 </div>
-                <div>
-                  <label for="photo2" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:0.82rem;color:var(--taupe-dk);margin-bottom:6px;display:block;">Photo 2</label>
-                  <div class="file-upload-area" onclick="document.getElementById('photo2').click()">
-                    <input type="file" id="photo2" name="inspiration_photo_2" accept="image/*" onchange="showFileName(this,'file2name')" />
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                    <p><strong>Click to upload</strong><br>JPG, PNG, HEIC — max 10MB</p>
-                    <p class="file-name" id="file2name"></p>
-                  </div>
-                </div>
+                <div style="text-align:right;font-size:0.78rem;color:var(--taupe-dk);line-height:1.5;">Same price<br>all stones</div>
               </div>
+              <button class="btn btn--primary is-cta__btn" id="isAddToCart" disabled onclick="handleAddToCart()">Add to Cart</button>
+              <p class="is-cta__note">All sales final on integrated sinks · GTA delivery or warehouse pickup only</p>
             </div>
+
           </div>
-
-          <hr class="form-divider" />
-
-          <!-- ── Additional Notes ── -->
-          <div class="form-group">
-            <p class="form-section-title" style="margin-bottom:12px;">Additional Notes</p>
-            <label for="notes">Anything else we should know about your project?</label>
-            <textarea id="notes" name="notes" placeholder="E.g. double sink, specific edge profile, backsplash integration, timeline, etc."></textarea>
-          </div>
-
-          <hr class="form-divider" />
-
-          <!-- ── Contact Info ── -->
-          <div>
-            <p class="form-section-title">Your Contact Information</p>
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first_name" placeholder="Jane" required />
-              </div>
-              <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last_name" placeholder="Smith" required />
-              </div>
-            </div>
-            <div class="form-grid-2" style="margin-top:16px;">
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="jane@example.com" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(416) 555-0100" required />
-              </div>
-            </div>
-          </div>
-
-          <!-- ── Submit ── -->
-          <div class="form-submit-wrap">
-            <button type="submit" class="btn btn--primary">Submit Custom Quote Request</button>
-            <p class="form-disclaimer">By submitting this form, you agree to be contacted by a Sinkly representative regarding your custom sink project. We typically respond within 24–48 hours.</p>
-          </div>
-
-        </form>
-
-        <!-- Success Message (shown after JS submit) -->
-        <div class="form-success" id="formSuccess">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 12px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h4>Request Received!</h4>
-          <p>Thank you — one of our representatives will be in touch within 24–48 hours to discuss your custom sink project.</p>
         </div>
-
       </div>
     </section>
 
@@ -873,37 +292,87 @@
     </div>
   </footer>
 
-  <div class="search-overlay" id="searchOverlay">
-    <button class="search-overlay__close" id="searchClose" aria-label="Close search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <div class="search-overlay__inner">
-      <input type="text" class="search-overlay__input" id="searchInput" placeholder="Search products…" autocomplete="off" />
-      <div class="search-overlay__results" id="searchResults"></div>
-    </div>
-  </div>
-
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-drawer__header"><h3>Your Cart</h3><button class="cart-drawer__close" id="cartClose" aria-label="Close cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
-    <div class="cart-drawer__items" id="cartItems"></div>
-    <div class="cart-drawer__footer"><div class="cart-drawer__total"><span>Total</span><span id="cartTotal">$0.00</span></div><button class="btn btn--primary" style="width:100%;">Checkout</button></div>
-  </div>
-  <div class="overlay" id="overlay"></div>
-
   <script src="products.js"></script>
   <script src="script.js"></script>
   <script>
-    // Show file name when selected
-    function showFileName(input, targetId) {
-      const el = document.getElementById(targetId);
-      el.textContent = input.files[0] ? input.files[0].name : '';
+    const SLABS = [
+      { id: 'calacatta-white', name: 'Calacatta White', desc: 'Warm white with gold veining', css: 'linear-gradient(135deg, #faf5ef 0%, #f5ede0 35%, #ede3d5 65%, #f8f2e9 100%)', img: 'integrated sinks/calacatta-white.jpg' },
+      { id: 'carrara', name: 'Carrara Marble', desc: 'Cool white with grey veining', css: 'linear-gradient(135deg, #f8f8f8 0%, #ebebeb 35%, #e2e2e2 65%, #f2f2f2 100%)', img: 'integrated sinks/carrara.jpg' },
+      { id: 'nero-marquina', name: 'Nero Marquina', desc: 'Deep black with white veining', css: 'linear-gradient(135deg, #1c1c1c 0%, #252525 35%, #1a1a1a 65%, #2a2a2a 100%)', img: 'integrated sinks/nero-marquina.jpg' },
+      { id: 'travertine', name: 'Travertine', desc: 'Warm beige with natural texture', css: 'linear-gradient(135deg, #d9c8b0 0%, #ccb898 35%, #bfaa87 65%, #d2c0a8 100%)', img: 'integrated sinks/travertine.jpg' },
+      { id: 'grey-quartz', name: 'Grey Quartz', desc: 'Uniform mid-grey, modern finish', css: 'linear-gradient(135deg, #9a9a9a 0%, #8d8d8d 35%, #858585 65%, #929292 100%)', img: 'integrated sinks/grey-quartz.jpg' },
+      { id: 'forest-green', name: 'Forest Green', desc: 'Deep emerald stone, bold statement', css: 'linear-gradient(135deg, #2e4e42 0%, #1f3a2e 35%, #243d32 65%, #335247 100%)', img: 'integrated sinks/forest-green.jpg' },
+    ];
+    const SIZES = [
+      { id: 'is-24', label: '24"', price: 850,  allowDouble: false },
+      { id: 'is-30', label: '30"', price: 965,  allowDouble: false },
+      { id: 'is-36', label: '36"', price: 1055, allowDouble: false },
+      { id: 'is-42', label: '42"', price: 1142, allowDouble: true  },
+      { id: 'is-48', label: '48"', price: 1190, allowDouble: true  },
+      { id: 'is-54', label: '54"', price: 1235, allowDouble: true  },
+      { id: 'is-60', label: '60"', price: 1350, allowDouble: true  },
+      { id: 'is-72', label: '72"', price: 1490, allowDouble: true  },
+    ];
+
+    let selSlab = null, selSize = null, selBowl = 'Single Bowl', selFulfil = 'delivery';
+
+    const slabGrid = document.getElementById('slabGrid');
+    SLABS.forEach((slab, i) => {
+      slabGrid.innerHTML += `<label class="is-slab"><input type="radio" name="is_slab" value="${slab.id}" onchange="selectSlab(${i})"><div class="is-slab__card"><div class="is-slab__texture" style="background:${slab.css};"><img class="is-slab__img" src="${slab.img}" alt="${slab.name}" onload="this.classList.add('loaded')" onerror="this.style.display='none'"></div><div class="is-slab__info"><div class="is-slab__name">${slab.name}</div><div class="is-slab__desc">${slab.desc}</div></div></div></label>`;
+    });
+
+    const sizeGrid = document.getElementById('sizeGrid');
+    SIZES.forEach((sz, i) => {
+      sizeGrid.innerHTML += `<label class="is-size"><input type="radio" name="is_size" value="${sz.id}" onchange="selectSize(${i})"><div class="is-size__btn"><span class="is-size__in">${sz.label}</span><span class="is-size__price">$${sz.price.toLocaleString()}</span></div></label>`;
+    });
+
+    function selectSlab(idx) {
+      selSlab = SLABS[idx];
+      document.getElementById('stonePreview').style.background = selSlab.css;
+      const img = document.getElementById('stonePreviewImg');
+      img.src = selSlab.img;
+      img.onload = () => img.classList.add('loaded');
+      img.onerror = () => { img.style.display='none'; };
+      document.getElementById('previewStoneName').textContent = selSlab.name;
+      document.getElementById('previewStoneDesc').textContent = selSlab.desc;
+      document.getElementById('summaryStone').textContent = selSlab.name;
+      updateCTA();
     }
 
-    // Smooth scroll to form
-    document.querySelectorAll('a[href="#quote-form"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('quote-form').scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+    function selectSize(idx) {
+      selSize = SIZES[idx];
+      const bowlStep = document.getElementById('bowlStep');
+      const fulfillTitle = document.getElementById('fulfillStepTitle');
+      if (selSize.allowDouble) {
+        bowlStep.style.display = 'block';
+        fulfillTitle.textContent = 'Step 4 — Fulfillment';
+      } else {
+        bowlStep.style.display = 'none';
+        fulfillTitle.textContent = 'Step 3 — Fulfillment';
+        selBowl = 'Single Bowl';
+        document.querySelector('input[name="is_bowl"][value="single"]').checked = true;
+      }
+      document.getElementById('summarySize').textContent = selSize.label;
+      document.getElementById('summaryBowl').textContent = selBowl;
+      document.getElementById('ctaPrice').textContent = '$' + selSize.price.toLocaleString();
+      document.getElementById('ctaPriceSub').textContent = 'CAD · ' + selSize.label + ' integrated sink';
+      updateCTA();
+    }
+
+    function selectBowl(bowl) { selBowl = bowl; document.getElementById('summaryBowl').textContent = selBowl; }
+    function selectFulfil(type) {
+      selFulfil = type;
+      document.getElementById('summaryFulfil').textContent = type === 'delivery' ? 'GTA Delivery — $350' : 'Pickup — Free';
+    }
+    function updateCTA() { document.getElementById('isAddToCart').disabled = !(selSlab && selSize); }
+
+    function handleAddToCart() {
+      if (!selSlab || !selSize) return;
+      const bowl = selSize.allowDouble ? selBowl : 'Single Bowl';
+      addIntegratedSinkToCart(selSize.id, selSize.label, selSlab.name, bowl, selSize.price, selFulfil, 'Custom Configuration');
+    }
+
+    selectFulfil('delivery');
   </script>
 </body>
 </html>
