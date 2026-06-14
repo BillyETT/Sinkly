@@ -96,7 +96,7 @@ function saveCart(cart) {
 // addToCart(productId, variantIdx)
 // Cart item: { cartKey, productId, variantIdx, qty }
 // cartKey = variant SKU (e.g. 'SINKLYGD3219') — guarantees Gold ≠ Silver in cart
-function addIntegratedSinkToCart(sizeId, sizeLabel, slab, bowlType, price, deliveryType, shape) {
+function addIntegratedSinkToCart(sizeId, sizeLabel, slab, bowlType, price, deliveryType) {
   const cartKey = sizeId + '-' + Date.now();
   const cart = getCart();
   cart.push({
@@ -108,7 +108,6 @@ function addIntegratedSinkToCart(sizeId, sizeLabel, slab, bowlType, price, deliv
     _slab: slab,
     _bowlType: bowlType,
     _size: sizeLabel,
-    _shape: shape || null,
     _price: price,
     _name: 'Integrated Stone Sink — ' + sizeLabel,
     _integratedDelivery: deliveryType,
@@ -274,7 +273,7 @@ function renderCartPage() {
     const price    = item._isIntegrated ? item._price : (p ? getVariantEffectivePrice(p, item.variantIdx ?? 0) : (item._price || 0));
     const subtotal = (price * item.qty).toFixed(2);
     const integratedDetails = item._isIntegrated
-      ? `<p class="cart-item__sku">${item._slab} · ${item._size}${item._shape ? ' · ' + item._shape : ''} · ${item._bowlType} · ${item._integratedDelivery === 'pickup' ? 'Pickup' : 'GTA Delivery'}</p>`
+      ? `<p class="cart-item__sku">${item._slab} · ${item._bowlType} · ${item._integratedDelivery === 'pickup' ? 'Pickup' : 'GTA Delivery'}</p>`
       : '';
 
     return `
@@ -428,7 +427,7 @@ async function startCheckout() {
     if (item._isIntegrated) {
       base.isIntegrated        = true;
       base.integratedDelivery  = item._integratedDelivery;
-      base.integratedDescription = item._size + ' · ' + item._slab + (item._shape ? ' · ' + item._shape : '') + ' · ' + item._bowlType;
+      base.integratedDescription = item._size + ' · ' + item._slab + ' · ' + item._bowlType;
     }
     return base;
   });

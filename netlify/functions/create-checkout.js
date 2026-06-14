@@ -28,13 +28,7 @@ const PRODUCT_CATALOG = {
   'ks-d3240':       { name: 'Large Double Bowl Sink',           price: 21000, salePrice:  null  },
   'ks-d3260':       { name: 'Oversized Double Bowl Sink',       price: 21000, salePrice:  null  },
   'ks-workstation': { name: 'Workstation Kitchen Sink',         price: 41100, salePrice: 32900  },
-  // Integrated Stone Sinks — design products (price resolved by size selection)
-  'is-p1': { name: 'Classic Rectangular Integrated Sink', price:  85000, salePrice: null },
-  'is-p2': { name: 'Farmhouse Integrated Sink',           price:  85000, salePrice: null },
-  'is-p3': { name: 'Vessel Bowl Integrated Sink',         price:  85000, salePrice: null },
-  'is-p4': { name: 'Deep Basin Integrated Sink',          price:  85000, salePrice: null },
-  'is-p5': { name: 'Minimalist Flat Integrated Sink',     price:  85000, salePrice: null },
-  // Integrated Stone Sinks — size-based price IDs
+  // Integrated Stone Sinks
   'is-24': { name: 'Integrated Stone Sink — 24"', price:  85000, salePrice: null },
   'is-30': { name: 'Integrated Stone Sink — 30"', price:  96500, salePrice: null },
   'is-36': { name: 'Integrated Stone Sink — 36"', price: 105500, salePrice: null },
